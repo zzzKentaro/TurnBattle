@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 2a44c481a08de0b4abef9c887ddbe141
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6317301343813805795
+    second: UIEnemyTurn_0
+  - first:
+      213: -2608552558531939715
+    second: UIEnemyTurn_1
+  - first:
+      213: 2567544498301961059
+    second: UIEnemyTurn_2
+  - first:
+      213: 8600803379392966522
+    second: UIEnemyTurn_3
+  - first:
+      213: 6483752822136034799
+    second: UIEnemyTurn_4
+  - first:
+      213: -4540470646360043684
+    second: UIEnemyTurn_5
+  - first:
+      213: -4526939027789032208
+    second: UIEnemyTurn_6
+  - first:
+      213: -8589203520997386762
+    second: UIEnemyTurn_7
+  - first:
+      213: -3496318962099288390
+    second: UIEnemyTurn_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UIEnemyTurn_0
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 46
+        width: 2085
+        height: 2931
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1951e6f5ef6458a0800000000000000
+      internalID: -6317301343813805795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIEnemyTurn_1
+      rect:
+        serializedVersion: 2
+        x: 3193
+        y: 109
+        width: 2215
+        height: 2734
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7274cac44f8ccbd0800000000000000
+      internalID: -2608552558531939715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIEnemyTurn_2
+      rect:
+        serializedVersion: 2
+        x: 5951
+        y: 180
+        width: 1544
+        height: 2515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3630c462e10c1a320800000000000000
+      internalID: 2567544498301961059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIEnemyTurn_3
+      rect:
+        serializedVersion: 2
+        x: 7874
+        y: 229
+        width: 1915
+        height: 2368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7f62b3ca113c5770800000000000000
+      internalID: 8600803379392966522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIEnemyTurn_4
+      rect:
+        serializedVersion: 2
+        x: 9984
+        y: 301
+        width: 1597
+        height: 2184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe5daded6daeaf950800000000000000
+      internalID: 6483752822136034799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIEnemyTurn_5
+      rect:
+        serializedVersion: 2
+        x: 12272
+        y: 355
+        width: 1254
+        height: 2009
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5f0f9ae0020df0c0800000000000000
+      internalID: -4540470646360043684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIEnemyTurn_6
+      rect:
+        serializedVersion: 2
+        x: 13672
+        y: 355
+        width: 1092
+        height: 1933
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f458c060f41d21c0800000000000000
+      internalID: -4526939027789032208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIEnemyTurn_7
+      rect:
+        serializedVersion: 2
+        x: 15022
+        y: 413
+        width: 1052
+        height: 1808
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f59a6bb7e40dc880800000000000000
+      internalID: -8589203520997386762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIEnemyTurn_8
+      rect:
+        serializedVersion: 2
+        x: 16166
+        y: 444
+        width: 896
+        height: 1715
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab60c92ad649a7fc0800000000000000
+      internalID: -3496318962099288390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UIEnemyTurn_0: -6317301343813805795
+      UIEnemyTurn_1: -2608552558531939715
+      UIEnemyTurn_2: 2567544498301961059
+      UIEnemyTurn_3: 8600803379392966522
+      UIEnemyTurn_4: 6483752822136034799
+      UIEnemyTurn_5: -4540470646360043684
+      UIEnemyTurn_6: -4526939027789032208
+      UIEnemyTurn_7: -8589203520997386762
+      UIEnemyTurn_8: -3496318962099288390
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

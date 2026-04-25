@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1536f364ec4311f4bb7faf47f4c52011, type: 3}
+  m_Name: DefaultBattleTurning
+  m_EditorClassIdentifier: Assembly-CSharp::TurnBasedBattle.BattleTuning
+  randomMin: 0.95
+  randomMax: 1.05
+  criticalMultiplier: 1.5
+  firstOrderAttackCoefficientBonus: 0
+  secondOrderAttackCoefficientBonus: 0
+  thirdOrderAttackCoefficientBonus: 0
+  damageBonusPerSameElementStack: 0.01
+  fireDotBaseDamage: 10
+  fireDotExtraDamagePerStackAfterFive: 5
+  windFollowUpBaseCoefficient: 0.8
+  windFollowUpExtraCoefficientPerStackAfterFive: 0.1
+  waterAttackCoefficientPenaltyBase: 0.05
+  waterAttackCoefficientPenaltyPerStackAfterFive: 0.01
+  earthDefenseCoefficientPenaltyBase: 0.05
+  earthDefenseCoefficientPenaltyPerStackAfterFive: 0.01
+  thunderCriticalChanceBase: 0.3
+  thunderCriticalChancePerStackAfterFive: 0.05
+  thunderCriticalChanceCap: 0.95

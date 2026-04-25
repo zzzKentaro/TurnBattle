@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a43496e0798e440ae825e657144c72, type: 3}
+  m_Name: Water2
+  m_EditorClassIdentifier: Assembly-CSharp::TurnBasedBattle.SpellData
+  spellId: water2
+  displayName: "\u96F9\u5F3E"
+  description: "\u6C34\u5C5E\u6027\u306E\u5C0F\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\n\u6575\u306E\u653B\u6483\u529B\u3092\u4E0B\u3052\u308B"
+  iconSprite: {fileID: -5130686204486642245, guid: 86b298b497b946446819bf964e215931, type: 3}
+  impactEffectPrefab: {fileID: 5408945033599246531, guid: 9d5fcef0d92579f47a5ea194b3654514, type: 3}
+  attackEffectSe: {fileID: 8300000, guid: 9082a1fc788fd894aa72b2664520e775, type: 3}
+  element: 2
+  category: 0
+  targetType: 1
+  mpCost: 30
+  attackCoefficient: 0.6
+  defenseCoefficient: 1
+  hitCount: 2
+  flatHealAmount: 0
+  stackPerHit: 1
+  useCurrentHpAsAttackSource: 0
+  missingHpAttackCoefficientBonusAtZeroHp: 0
+  allowCritical: 1
+  defensePenetration: 0
+  orderAffinity: 0
+  firstOrderAttackCoefficientBonus: 0
+  secondOrderAttackCoefficientBonus: 0
+  thirdOrderAttackCoefficientBonus: 0
+  nextSpellAttackCoefficientBonus: 0
+  selfAttackStatDelta: 0
+  selfDefenseStatDelta: 0
+  targetAttackStatDelta: 0
+  targetDefenseStatDelta: 0
+  statModifierDurationTurns: 0
+  selfAttackCoefficientDelta: 0
+  selfDefenseCoefficientDelta: 0
+  targetAttackCoefficientDelta: -0.6
+  targetDefenseCoefficientDelta: 0
+  coefficientModifierDurationTurns: 0
+  levelAttackCoefficientPerLevel: 0.05
+  maxLevel: 6

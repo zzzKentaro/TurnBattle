@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a43496e0798e440ae825e657144c72, type: 3}
+  m_Name: Thunder1
+  m_EditorClassIdentifier: Assembly-CSharp::TurnBasedBattle.SpellData
+  spellId: thunder1
+  displayName: "\u7A7F\u96F7"
+  description: "\u96F7\u5C5E\u6027\u306E\u5927\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\n3\u756A\u76EE\u306B\u4F7F\u3046\u3068\u5A01\u529B\u4E0A\u6607"
+  iconSprite: {fileID: -8080631937122002824, guid: d83794fbf2ffb31458bc40a0097af221, type: 3}
+  impactEffectPrefab: {fileID: 5580304819293166740, guid: 5ac4c2b670455904caac7b57700a3103, type: 3}
+  attackEffectSe: {fileID: 8300000, guid: 908091205c87fcd4caadf561504f7279, type: 3}
+  element: 5
+  category: 0
+  targetType: 1
+  mpCost: 20
+  attackCoefficient: 1.3
+  defenseCoefficient: 1
+  hitCount: 1
+  flatHealAmount: 0
+  stackPerHit: 5
+  useCurrentHpAsAttackSource: 0
+  missingHpAttackCoefficientBonusAtZeroHp: 0
+  allowCritical: 1
+  defensePenetration: 0
+  orderAffinity: 3
+  firstOrderAttackCoefficientBonus: 0
+  secondOrderAttackCoefficientBonus: 0
+  thirdOrderAttackCoefficientBonus: 1
+  nextSpellAttackCoefficientBonus: 0
+  selfAttackStatDelta: 0
+  selfDefenseStatDelta: 0
+  targetAttackStatDelta: 0
+  targetDefenseStatDelta: 0
+  statModifierDurationTurns: 0
+  selfAttackCoefficientDelta: 0
+  selfDefenseCoefficientDelta: 0
+  targetAttackCoefficientDelta: 0
+  targetDefenseCoefficientDelta: 0
+  coefficientModifierDurationTurns: 0
+  levelAttackCoefficientPerLevel: 0.05
+  maxLevel: 6
