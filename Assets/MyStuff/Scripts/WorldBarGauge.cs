@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// ワールド空間に配置されるバーゲージUIコンポーネント。
+/// </summary>
 public class WorldBarGauge : MonoBehaviour
 {
     [Header("Fill Object")]

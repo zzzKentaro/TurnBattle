@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace TurnBasedBattle
 {
+    /// <summary>
+    /// 敵の行動（最大3つの魔法アクション）を決定するAIロジック。
+    /// </summary>
     public class EnemyAI : MonoBehaviour
     {
         public List<SpellAction> BuildTurnActions(BattleUnit enemy, BattleUnit target)

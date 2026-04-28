@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// SpriteMaskedVerticalMenuの階層（スタック）を管理し、メニューの遷移を制御する。
+/// </summary>
 public class SpriteMenuStackController : MonoBehaviour
 {
     [Header("Menus")]

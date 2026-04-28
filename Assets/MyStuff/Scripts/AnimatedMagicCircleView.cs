@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// アニメーションする魔法陣のビュー制御を行う。
+/// </summary>
 public class AnimatedMagicCircleView : MonoBehaviour
 {
     [Header("Particle Prefab")]

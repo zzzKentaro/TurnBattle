@@ -2,6 +2,9 @@ using TMPro;
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// 記憶した魔法のレベルテキスト表示を制御するビュースクリプト。
+/// </summary>
 public class RememberedSpellLevelTextSlotView : MonoBehaviour
 {
     [SerializeField] private BattleManager battleManager;

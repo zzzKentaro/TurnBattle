@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace TurnBasedBattle
 {
+    /// <summary>
+    /// プレイヤーが記憶（ラーニング）した魔法の状態やレベルを保持するクラス。
+    /// </summary>
     [Serializable]
     public class RememberedSpell
     {

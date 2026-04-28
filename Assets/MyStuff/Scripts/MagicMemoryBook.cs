@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace TurnBasedBattle
 {
+    /// <summary>
+    /// プレイヤーが敵からコピーした魔法（記憶）のリスト管理や、枠の上限・入れ替え処理を制御する。
+    /// </summary>
     [Serializable]
     public class MagicMemoryBook
     {

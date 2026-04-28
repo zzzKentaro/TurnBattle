@@ -3,6 +3,9 @@ using TMPro;
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// 現在蓄積されている属性スタック数をアイコン等でUIに表示する。
+/// </summary>
 public class BattleUnitElementStacksView : MonoBehaviour
 {
     [Serializable]

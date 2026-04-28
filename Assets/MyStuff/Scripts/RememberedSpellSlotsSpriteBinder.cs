@@ -1,6 +1,9 @@
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// プレイヤーの魔法記憶枠（メモリースロット）の表示を行うバインダー。
+/// </summary>
 public class RememberedSpellSlotsSpriteBinder : MonoBehaviour
 {
     [SerializeField] private BattleManager battleManager;

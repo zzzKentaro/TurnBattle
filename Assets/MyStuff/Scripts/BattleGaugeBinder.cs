@@ -1,6 +1,9 @@
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// HPやMPなどのゲージをUI要素にバインドし、値の変動を同期させる。
+/// </summary>
 public class BattleGaugeBinder : MonoBehaviour
 {
     [Header("Units")]

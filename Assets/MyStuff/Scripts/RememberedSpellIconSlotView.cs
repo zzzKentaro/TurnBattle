@@ -1,6 +1,9 @@
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// 記憶した魔法のアイコン表示を制御するビュースクリプト。
+/// </summary>
 public class RememberedSpellIconSlotView : MonoBehaviour
 {
     [SerializeField] private BattleManager battleManager;
