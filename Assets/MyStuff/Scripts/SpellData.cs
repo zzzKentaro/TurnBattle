@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace TurnBasedBattle
 {
+    /// <summary>
+    /// 個々の魔法の効果、消費コスト、属性、演出などを定義するデータクラス（ScriptableObject）。
+    /// </summary>
     [CreateAssetMenu(fileName = "SpellData", menuName = "TurnBattle/Spell Data")]
     public class SpellData : ScriptableObject
     {

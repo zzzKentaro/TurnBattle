@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// ワールド空間に配置される3D/2DボタンUIコンポーネント。ホバーやクリックイベントを扱う。
+/// </summary>
 public class WorldButton : MonoBehaviour,
     IPointerEnterHandler,
     IPointerExitHandler,

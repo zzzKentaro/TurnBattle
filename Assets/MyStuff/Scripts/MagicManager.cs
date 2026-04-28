@@ -1,6 +1,9 @@
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// ゲーム内で登場する魔法データ全般を統括する。
+/// </summary>
 public class MagicManager : MonoBehaviour
 {
     [SerializeField] private BattleManager battleManager;

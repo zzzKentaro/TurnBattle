@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 [Serializable]
 public class SpriteMenuIndexEvent : UnityEvent<int> { }
 
+/// <summary>
+/// スプライトマスクを活用した、スクロール可能なリッチな縦型UIメニューコンポーネント。
+/// </summary>
 public class SpriteMaskedVerticalMenu : MonoBehaviour
 {
     [Header("Menu Items")]
@@ -67,12 +70,18 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
     public int ItemCount => items.Count;
     public int CurrentIndex => currentIndex;
 
+    /// <summary>
+    /// コンポーネント追加時やReset時に呼ばれ、itemsRootの初期設定を行う。
+    /// </summary>
     private void Reset()
     {
         if (itemsRoot == null)
             itemsRoot = contentRoot != null ? contentRoot : transform;
     }
 
+    /// <summary>
+    /// インスペクターでの値変更時に呼ばれ、設定値の制限やスクロール状態の更新を行う。
+    /// </summary>
     private void OnValidate()
     {
         visibleCount = Mathf.Max(1, visibleCount);
@@ -86,6 +95,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         RefreshScrollVisualState();
     }
 
+    /// <summary>
+    /// 初期化処理。コンテンツルートやスクロールバーのベース位置・スケールを記録する。
+    /// </summary>
     private void Awake()
     {
         if (contentRoot != null)
@@ -95,6 +107,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
             thumbBaseLocalScale = thumb.localScale;
     }
 
+    /// <summary>
+    /// コンポーネント有効時に呼ばれ、入力の有効化、項目の自動収集、スクロールや選択状態の初期化を行う。
+    /// </summary>
     private void OnEnable()
     {
         if (autoCollectItemsFromChildren)
@@ -116,11 +131,17 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         ResetHold();
     }
 
+    /// <summary>
+    /// コンポーネント無効時に呼ばれ、入力のホールド状態をリセットする。
+    /// </summary>
     private void OnDisable()
     {
         ResetHold();
     }
 
+    /// <summary>
+    /// 毎フレーム呼ばれ、入力処理とアニメーション（スクロール等）の更新を行う。
+    /// </summary>
     private void Update()
     {
         if (items.Count == 0)
@@ -136,6 +157,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         UpdateAnimatedPositions();
     }
 
+    /// <summary>
+    /// ナビゲーション（上下移動）の入力処理を行う。長押しによる連続移動もサポートする。
+    /// </summary>
     private void HandleNavigate()
     {
         if (navigateAction == null)
@@ -172,6 +196,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 決定ボタンの入力処理を行う。
+    /// </summary>
     private void HandleSubmit()
     {
         if (submitAction == null)
@@ -181,6 +208,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
             SubmitCurrentItem();
     }
 
+    /// <summary>
+    /// キャンセルボタンの入力処理を行う。
+    /// </summary>
     private void HandleCancel()
     {
         if (cancelAction == null)
@@ -190,6 +220,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
             onCancel?.Invoke();
     }
 
+    /// <summary>
+    /// 現在選択されているアイテムの決定処理を実行する。
+    /// </summary>
     public void SubmitCurrentItem()
     {
         SpriteMenuItem item = GetItem(currentIndex);
@@ -201,6 +234,10 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         Submitted?.Invoke(currentIndex, item);
     }
 
+    /// <summary>
+    /// 選択位置を指定された方向（-1 または 1）へ移動させる。
+    /// </summary>
+    /// <param name="direction">移動方向</param>
     private void MoveSelection(int direction)
     {
         int next = currentIndex + direction;
@@ -225,6 +262,12 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         NotifySelectionChanged();
     }
 
+    /// <summary>
+    /// 選択インデックスが画面内に収まるように、一番上に表示されるアイテムのインデックスを計算する。
+    /// </summary>
+    /// <param name="selectedIndex">現在の選択インデックス</param>
+    /// <param name="currentTop">現在の最上段インデックス</param>
+    /// <returns>新しい最上段のインデックス</returns>
     private int CalculateTopVisibleIndex(int selectedIndex, int currentTop)
     {
         int newTop = currentTop;
@@ -244,6 +287,10 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         return newTop;
     }
 
+    /// <summary>
+    /// すべてのメニューアイテムに対して、現在の選択状態を反映させる。
+    /// </summary>
+    /// <param name="immediate">即座に反映するかどうか</param>
     private void RefreshSelection(bool immediate = false)
     {
         for (int i = 0; i < items.Count; i++)
@@ -253,6 +300,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 選択項目の変更をイベントとして通知する。
+    /// </summary>
     private void NotifySelectionChanged()
     {
         SpriteMenuItem item = GetItem(currentIndex);
@@ -260,6 +310,10 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         SelectionChanged?.Invoke(currentIndex, item);
     }
 
+    /// <summary>
+    /// 現在のスクロール状態に基づき、コンテンツの目標となるローカル座標を計算する。
+    /// </summary>
+    /// <returns>目標のローカル座標</returns>
     private Vector3 GetTargetContentLocalPos()
     {
         if (!enableScroll)
@@ -268,6 +322,10 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         return contentBaseLocalPos + Vector3.up * (topVisibleIndex * itemStep);
     }
 
+    /// <summary>
+    /// 現在のスクロール状態に基づき、スクロールバーのつまみ（Thumb）の目標ローカル座標を計算する。
+    /// </summary>
+    /// <returns>目標のローカル座標</returns>
     private Vector3 GetTargetThumbLocalPos()
     {
         if (thumb == null || thumbTopAnchor == null || thumbBottomAnchor == null)
@@ -286,6 +344,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         );
     }
 
+    /// <summary>
+    /// アイテム総数と表示可能数から、スクロールバーのつまみのスケールを計算し、即座に適用する。
+    /// </summary>
     private void ApplyThumbScaleImmediate()
     {
         if (thumb == null)
@@ -303,6 +364,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         thumb.localScale = scale;
     }
 
+    /// <summary>
+    /// コンテンツおよびスクロールバーの目標位置を計算し、アニメーションなしで即座に適用する。
+    /// </summary>
     private void ApplyPositionsImmediate()
     {
         if (contentRoot != null)
@@ -312,6 +376,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
             thumb.localPosition = GetTargetThumbLocalPos();
     }
 
+    /// <summary>
+    /// コンテンツとスクロールバーの位置を、目標位置に向けて滑らかに補間移動（アニメーション）させる。
+    /// </summary>
     private void UpdateAnimatedPositions()
     {
         if (contentRoot != null)
@@ -335,12 +402,18 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// スクロール機能の有効/無効状態に応じて、スクロールバーの表示状態を更新する。
+    /// </summary>
     private void RefreshScrollVisualState()
     {
         if (scrollBarRoot != null && showScrollBarOnlyWhenScrollEnabled)
             scrollBarRoot.SetActive(enableScroll);
     }
 
+    /// <summary>
+    /// 押しっぱなしによる連続移動（ホールド）の状態をリセットする。
+    /// </summary>
     private void ResetHold()
     {
         isHolding = false;
@@ -348,6 +421,9 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         nextRepeatTime = 0f;
     }
 
+    /// <summary>
+    /// 入力の有効/無効フラグに応じて、InputActionの有効化・無効化を行う。
+    /// </summary>
     private void ApplyInputActionState()
     {
         if (inputEnabled)
@@ -362,12 +438,19 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// メニューの入力を有効化、または無効化する。
+    /// </summary>
+    /// <param name="enabled">有効にするかどうか</param>
     public void SetInputEnabled(bool enabled)
     {
         inputEnabled = enabled;
         ApplyInputActionState();
     }
 
+    /// <summary>
+    /// ルートオブジェクトの子要素からメニューアイテム（SpriteMenuItem）を検索し、リストを更新する。
+    /// </summary>
     public void RefreshItemListFromChildren()
     {
         Transform root = itemsRoot != null ? itemsRoot : (contentRoot != null ? contentRoot : transform);
@@ -381,6 +464,11 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 指定されたインデックスのメニューアイテムを取得する。
+    /// </summary>
+    /// <param name="index">取得するインデックス</param>
+    /// <returns>メニューアイテム（範囲外の場合は null）</returns>
     public SpriteMenuItem GetItem(int index)
     {
         if (index < 0 || index >= items.Count)
@@ -389,8 +477,16 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         return items[index];
     }
 
+    /// <summary>
+    /// 現在選択されているインデックスを取得する。
+    /// </summary>
+    /// <returns>現在のインデックス</returns>
     public int GetCurrentIndex() => currentIndex;
 
+    /// <summary>
+    /// 選択インデックスを直接指定して設定する。
+    /// </summary>
+    /// <param name="index">設定するインデックス</param>
     public void SetCurrentIndex(int index)
     {
         if (items.Count == 0)
@@ -404,12 +500,20 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
         ResetHold();
     }
 
+    /// <summary>
+    /// 選択状態の見た目を強制的に更新し、変更通知を発火する。
+    /// </summary>
     public void RefreshSelectionVisuals()
     {
         RefreshSelection(true);
         NotifySelectionChanged();
     }
 
+    /// <summary>
+    /// メニューのスクロール機能を有効化、または無効化する。
+    /// </summary>
+    /// <param name="enabled">スクロールを有効にするかどうか</param>
+    /// <param name="snapImmediately">即座に目標位置へスナップさせるかどうか</param>
     public void SetScrollEnabled(bool enabled, bool snapImmediately = true)
     {
         enableScroll = enabled;
@@ -422,6 +526,10 @@ public class SpriteMaskedVerticalMenu : MonoBehaviour
             ApplyPositionsImmediate();
     }
 
+    /// <summary>
+    /// スクロール機能が有効かどうかを取得する。
+    /// </summary>
+    /// <returns>有効な場合は true</returns>
     public bool IsScrollEnabled()
     {
         return enableScroll;

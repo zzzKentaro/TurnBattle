@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// 記憶した魔法一覧メニューのUI構築およびデータのバインドを行う。
+/// </summary>
 public class RememberedSpellMenuBinder : MonoBehaviour
 {
     [Header("References")]

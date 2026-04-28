@@ -1,6 +1,9 @@
 using DG.Tweening;
 using UnityEngine;
 
+/// <summary>
+/// バトル開始時の環境設定および初期化を行うコンポーネント。
+/// </summary>
 public class StartEnvironment : MonoBehaviour
 {
     [SerializeField] Vector3 origin;

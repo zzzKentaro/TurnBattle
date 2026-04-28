@@ -55,6 +55,9 @@ namespace TurnBasedBattle
         }
     }
 
+    /// <summary>
+    /// 火属性など、蓄積することで継続ダメージ等を発生させる「属性スタック」を管理する。
+    /// </summary>
     [Serializable]
     public class ElementStackController
     {

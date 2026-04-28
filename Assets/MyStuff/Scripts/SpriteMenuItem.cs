@@ -3,6 +3,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// SpriteMaskedVerticalMenu内の各メニューアイテム（項目）を表現するクラス。
+/// </summary>
 public class SpriteMenuItem : MonoBehaviour
 {
     [Header("Visual")]

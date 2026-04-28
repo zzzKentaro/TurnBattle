@@ -25,6 +25,9 @@ namespace TurnBasedBattle
         public int sourceAttackValue;
     }
 
+    /// <summary>
+    /// 魔法や属性スタックに応じた最終的なダメージ計算ロジックを提供する静的クラス。
+    /// </summary>
     public static class DamageCalculator
     {
         public static DamageCalculationResult Calculate(DamageCalculationInput input)

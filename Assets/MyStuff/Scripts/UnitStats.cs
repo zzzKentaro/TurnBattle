@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace TurnBasedBattle
 {
+    /// <summary>
+    /// ユニットの基礎ステータスを定義するデータ構造体。
+    /// </summary>
     [Serializable]
     public class UnitStats
     {

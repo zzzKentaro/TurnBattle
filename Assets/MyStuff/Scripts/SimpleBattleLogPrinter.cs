@@ -5,6 +5,9 @@ using TMPro;
 
 namespace TurnBasedBattle
 {
+    /// <summary>
+    /// 画面上やコンソールへの簡易的なバトルログ出力を担当する。
+    /// </summary>
     public class SimpleBattleLogPrinter : MonoBehaviour
     {
         [SerializeField] private BattleManager battleManager;

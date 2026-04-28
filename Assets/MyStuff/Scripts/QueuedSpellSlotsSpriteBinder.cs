@@ -1,6 +1,9 @@
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// 予約した魔法をアクションスロットに反映させるバインダー。
+/// </summary>
 public class QueuedSpellSlotsSpriteBinder : MonoBehaviour
 {
     [SerializeField] private BattleManager battleManager;

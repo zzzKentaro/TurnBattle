@@ -1,5 +1,8 @@
 using System;
 
+/// <summary>
+/// バトルシステム全体で使用される列挙型（バトルのフェーズ状態など）を定義する。
+/// </summary>
 namespace TurnBasedBattle
 {
     public enum ElementType

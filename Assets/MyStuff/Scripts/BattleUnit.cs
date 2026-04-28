@@ -20,6 +20,9 @@ namespace TurnBasedBattle
         public int remainingTurns;
     }
 
+    /// <summary>
+    /// プレイヤーおよび敵ユニットのステータス、MP、HPなどを管理するコンポーネント。
+    /// </summary>
     public class BattleUnit : MonoBehaviour
     {
         [Header("Identity")]

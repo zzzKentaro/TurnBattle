@@ -3,6 +3,9 @@ using TMPro;
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// ワールド空間におけるユニットステータスの表示を制御する。
+/// </summary>
 public class BattleStatusWorldView : MonoBehaviour
 {
     [Header("Units")]

@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace TurnBasedBattle
 {
+    /// <summary>
+    /// バトルのダメージ倍率やパラメータ調整用のScriptableObject。
+    /// </summary>
     [CreateAssetMenu(fileName = "BattleTuning", menuName = "TurnBattle/Battle Tuning")]
     public class BattleTuning : ScriptableObject
     {

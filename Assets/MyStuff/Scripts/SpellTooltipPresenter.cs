@@ -2,6 +2,9 @@ using TMPro;
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// スロット上の魔法にフォーカスした際の詳細情報（ツールチップ）を表示するプレゼンター。
+/// </summary>
 public class SpellTooltipPresenter : MonoBehaviour
 {
     [SerializeField] private BattleManager battleManager;

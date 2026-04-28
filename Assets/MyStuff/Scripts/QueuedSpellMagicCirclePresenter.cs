@@ -1,6 +1,9 @@
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// 予約した魔法を魔法陣UI上に表示・管理するプレゼンター。
+/// </summary>
 public class QueuedSpellMagicCirclePresenter : MonoBehaviour
 {
     [SerializeField] private BattleManager battleManager;

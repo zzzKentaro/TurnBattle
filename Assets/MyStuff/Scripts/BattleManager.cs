@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace TurnBasedBattle
 {
+    /// <summary>
+    /// バトルの進行状況やターン管理、魔法アクションのキュー管理を行うゲームのメインシステム。
+    /// </summary>
     public class BattleManager : MonoBehaviour
     {
         [Header("References")]

@@ -32,6 +32,9 @@ namespace TurnBasedBattle
         public readonly List<ResolvedHitInfo> hits = new List<ResolvedHitInfo>();
     }
 
+    /// <summary>
+    /// プレイヤーおよび敵が予約した魔法アクションの実行順序や効果解決を処理する。
+    /// </summary>
     public static class SpellResolver
     {
         public static SpellExecutionReport Execute(

@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// タイトル画面のメニューアクション（ゲーム開始など）の処理を行うコンポーネント。
+/// </summary>
 public class TitleMenuActions : MonoBehaviour
 {
     public void StartGame()

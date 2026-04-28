@@ -1,6 +1,9 @@
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// 敵が直前に使用した魔法をスロットUIに表示するバインダー。
+/// </summary>
 public class EnemyUsedSpellSlotsSpriteBinder : MonoBehaviour
 {
     [SerializeField] private BattleManager battleManager;

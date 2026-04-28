@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace TurnBasedBattle
 {
+    /// <summary>
+    /// 実行される魔法のアクション内容（誰から誰へ、どの魔法か）を保持するクラス。
+    /// </summary>
     [System.Serializable]
     public class SpellAction
     {

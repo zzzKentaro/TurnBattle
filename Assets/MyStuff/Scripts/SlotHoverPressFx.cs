@@ -2,6 +2,9 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// スロットやボタンをホバー・押下した際の拡大縮小などのフィードバックエフェクトを提供する。
+/// </summary>
 public class SlotHoverPressFx : MonoBehaviour,
     IPointerEnterHandler,
     IPointerExitHandler,

@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TurnBasedBattle;
 
+/// <summary>
+/// バトルメニューへの入力（操作）の有効・無効を制御する。
+/// </summary>
 public class BattleMenuInputGate : MonoBehaviour
 {
     [Header("References")]
