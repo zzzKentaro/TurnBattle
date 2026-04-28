@@ -27,4 +27,9 @@ public class TitleMenuActions : MonoBehaviour
     {
         Debug.Log("キャンセル");
     }
+
+    public void NextMenu()
+    {
+        Debug.Log("選択ボタンを押した");
+    }
 }

@@ -6796,9 +6796,9 @@ MonoBehaviour:
   thumbBottomAnchor: {fileID: 0}
   thumbLerpSpeed: 16
   minThumbScaleRatio: 0.2
-  navigateAction: {fileID: 0}
-  submitAction: {fileID: 0}
-  cancelAction: {fileID: 0}
+  navigateAction: {fileID: -7247399646321356000, guid: 677bb3e05498b414193cb01845882250, type: 3}
+  submitAction: {fileID: 9014168310841963820, guid: 677bb3e05498b414193cb01845882250, type: 3}
+  cancelAction: {fileID: -3000090283873302360, guid: 677bb3e05498b414193cb01845882250, type: 3}
   deadZone: 0.5
   firstRepeatDelay: 0.25
   repeatInterval: 0.1
