@@ -2001,7 +2001,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7323,7 +7323,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8098,7 +8098,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8903,7 +8903,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9277,7 +9277,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9363,7 +9363,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9770,7 +9770,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11450,7 +11450,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11536,7 +11536,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11724,7 +11724,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13753,7 +13753,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13930,7 +13930,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18910,7 +18910,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18996,7 +18996,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19959,7 +19959,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20045,7 +20045,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 969556275}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
