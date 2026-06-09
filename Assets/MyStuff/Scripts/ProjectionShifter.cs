@@ -31,6 +31,8 @@ public class ProjectionShifter : MonoBehaviour
     [Header("Scales")]
     [SerializeField] private float playerTurnEnemyScale = 1f;
     [SerializeField] private float enemyTurnEnemyScale = 1.15f;
+    [SerializeField] private float playerTurnCasterScale = 1f;
+    [SerializeField] private float enemyTurnCasterScale = 0.9f;
     [SerializeField] private float phaseShifterScale = 0.08f;
 
     [Header("Timing")]
@@ -55,6 +57,17 @@ public class ProjectionShifter : MonoBehaviour
 
     public bool IsShifting => isShifting;
     public bool IsPlayerTurn => isPlayerTurn;
+
+    public void SetEnemyObject(GameObject nextEnemyObject)
+    {
+        if (nextEnemyObject == null)
+        {
+            return;
+        }
+
+        enemyObj = nextEnemyObject;
+        SetEnemyScaleImmediate(isPlayerTurn ? playerTurnEnemyScale : enemyTurnEnemyScale);
+    }
 
     private void Awake()
     {
@@ -158,9 +171,10 @@ public class ProjectionShifter : MonoBehaviour
             phaseShifterEnemyTurn.transform.localScale = new Vector3(-phaseShifterScale, 0f, phaseShifterScale);
         }
 
-        MovePanelToHidden(casterPanel, casterPanelHikaePosition, true);
+        MovePanelToVisible(casterPanel, casterPanelPosition);
         MovePanelToHidden(magicPanel, magicPanelHikaePosition, true);
         ScaleEnemy(enemyTurnEnemyScale);
+        ScaleCaster(enemyTurnCasterScale);
 
         currentSequence = DOTween.Sequence();
 
@@ -210,6 +224,7 @@ public class ProjectionShifter : MonoBehaviour
         MovePanelToVisible(casterPanel, casterPanelPosition);
         MovePanelToVisible(magicPanel, magicPanelPosition);
         ScaleEnemy(playerTurnEnemyScale);
+        ScaleCaster(playerTurnCasterScale);
 
         currentSequence = DOTween.Sequence();
 
@@ -269,13 +284,15 @@ public class ProjectionShifter : MonoBehaviour
             SetPanelImmediate(casterPanel, casterPanelPosition, true);
             SetPanelImmediate(magicPanel, magicPanelPosition, true);
             SetEnemyScaleImmediate(playerTurnEnemyScale);
+            SetCasterScaleImmediate(playerTurnCasterScale);
             SetTurnLineRotationImmediate(minusRotation, plusRotation);
         }
         else
         {
-            SetPanelImmediate(casterPanel, casterPanelHikaePosition, false);
+            SetPanelImmediate(casterPanel, casterPanelPosition, true);
             SetPanelImmediate(magicPanel, magicPanelHikaePosition, false);
             SetEnemyScaleImmediate(enemyTurnEnemyScale);
+            SetCasterScaleImmediate(enemyTurnCasterScale);
             SetTurnLineRotationImmediate(plusRotation, minusRotation);
         }
     }
@@ -320,6 +337,16 @@ public class ProjectionShifter : MonoBehaviour
         enemyObj.transform.DOScale(new Vector3(targetScale, targetScale, targetScale), panelMoveDuration).SetUpdate(false);
     }
 
+    private void ScaleCaster(float targetScale)
+    {
+        if (casterPanel == null)
+        {
+            return;
+        }
+
+        casterPanel.transform.DOScale(new Vector3(targetScale, targetScale, targetScale), panelMoveDuration).SetUpdate(false);
+    }
+
     private void SetEnemyScaleImmediate(float targetScale)
     {
         if (enemyObj == null)
@@ -328,6 +355,16 @@ public class ProjectionShifter : MonoBehaviour
         }
 
         enemyObj.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
+    }
+
+    private void SetCasterScaleImmediate(float targetScale)
+    {
+        if (casterPanel == null)
+        {
+            return;
+        }
+
+        casterPanel.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
     }
 
     private void SetPanelImmediate(GameObject panel, GameObject targetPosition, bool active)

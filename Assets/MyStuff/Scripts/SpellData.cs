@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TurnBasedBattle
@@ -8,6 +10,17 @@ namespace TurnBasedBattle
     [CreateAssetMenu(fileName = "SpellData", menuName = "TurnBattle/Spell Data")]
     public class SpellData : ScriptableObject
     {
+        [Serializable]
+        public class LevelGrowthEntry
+        {
+            [Tooltip("このレベルへ上がるために、前のレベルから必要な使用回数です。例: Lv.2の行ならLv.1からLv.2に上がる回数。")]
+            [SerializeField, Min(1)] private int requiredUsesFromPreviousLevel = 1;
+            [Tooltip("このレベルのときに加算される攻撃係数ボーナスです。例: 0.10なら基礎攻撃係数に+0.10。")]
+            [SerializeField] private float attackCoefficientBonus = 0f;
+
+            public int RequiredUsesFromPreviousLevel => Mathf.Max(1, requiredUsesFromPreviousLevel);
+            public float AttackCoefficientBonus => attackCoefficientBonus;
+        }
         [Header("識別情報")]
         [SerializeField] private string spellId = "spell_new";
         [SerializeField] private string displayName = "New Spell";
@@ -57,6 +70,8 @@ namespace TurnBasedBattle
         [Header("レベル成長")]
         [SerializeField, Range(0f, 1f)] private float levelAttackCoefficientPerLevel = 0.05f;
         [SerializeField] private int maxLevel = 6;
+        [Tooltip("Lv.2以降の個別成長設定です。要素0がLv.2、要素1がLv.3に対応します。未設定のレベルは従来の一律設定を使います。")]
+        [SerializeField] private List<LevelGrowthEntry> levelGrowthEntries = new List<LevelGrowthEntry>();
 
         [Header("使用回数で強くなる魔法")]
         [Tooltip("この魔法の総使用回数1回につき加算される攻撃係数です。例: 0.05なら、10回使用済みで+0.5されます。")]
@@ -112,7 +127,8 @@ namespace TurnBasedBattle
         public float TargetDefenseCoefficientDelta => targetDefenseCoefficientDelta;
         public int CoefficientModifierDurationTurns => coefficientModifierDurationTurns;
         public float LevelAttackCoefficientPerLevel => levelAttackCoefficientPerLevel;
-        public int MaxLevel => maxLevel;
+        public int MaxLevel => Mathf.Max(1, maxLevel);
+        public IReadOnlyList<LevelGrowthEntry> LevelGrowthEntries => levelGrowthEntries;
         public float UseCountAttackCoefficientBonusPerUse => useCountAttackCoefficientBonusPerUse;
         public bool CapUseCountAttackCoefficientBonus => capUseCountAttackCoefficientBonus;
         public float MaxUseCountAttackCoefficientBonus => maxUseCountAttackCoefficientBonus;
@@ -142,6 +158,62 @@ namespace TurnBasedBattle
             return Mathf.Max(0f, bonus);
         }
 
+
+        public int GetRequiredUsesForNextLevel(int currentLevel)
+        {
+            int normalizedLevel = Mathf.Max(1, currentLevel);
+            if (normalizedLevel >= MaxLevel)
+            {
+                return int.MaxValue;
+            }
+
+            LevelGrowthEntry entry = GetLevelGrowthEntry(normalizedLevel + 1);
+            if (entry != null)
+            {
+                return entry.RequiredUsesFromPreviousLevel;
+            }
+
+            return GetDefaultRequiredUsesForNextLevel(normalizedLevel);
+        }
+
+        public float GetLevelAttackCoefficientBonus(int level)
+        {
+            int normalizedLevel = Mathf.Clamp(level, 1, MaxLevel);
+            LevelGrowthEntry entry = GetLevelGrowthEntry(normalizedLevel);
+            if (entry != null)
+            {
+                return entry.AttackCoefficientBonus;
+            }
+
+            return Mathf.Max(0, normalizedLevel - 1) * levelAttackCoefficientPerLevel;
+        }
+
+        private LevelGrowthEntry GetLevelGrowthEntry(int level)
+        {
+            int index = level - 2;
+            if (levelGrowthEntries == null || index < 0 || index >= levelGrowthEntries.Count)
+            {
+                return null;
+            }
+
+            return levelGrowthEntries[index];
+        }
+
+        private int GetDefaultRequiredUsesForNextLevel(int currentLevel)
+        {
+            switch (currentLevel)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    return 1;
+                case 5:
+                    return 20;
+                default:
+                    return int.MaxValue;
+            }
+        }
         public float GetOrderSpecificAttackCoefficientBonus(int orderIndex)
         {
             switch (orderIndex)

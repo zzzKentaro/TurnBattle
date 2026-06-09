@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137b71130b628342864a3be5f87921b, type: 3}
+  m_Name: BattleDemoStage
+  m_EditorClassIdentifier: Assembly-CSharp::TurnBasedBattle.BattleStageData
+  stageDisplayName: BattleDemoStage
+  clearPlayerMemoryOnStageStart: 1
+  playerStartingSpells:
+  - {fileID: 11400000, guid: 947412186cb0573479dcd9a031d2a415, type: 2}
+  - {fileID: 11400000, guid: ad80bee4485376543853d5b7cfed2130, type: 2}
+  - {fileID: 11400000, guid: 93f49bcbc4a34ba4cbe583a48d8fb222, type: 2}
+  - {fileID: 11400000, guid: 11119952c71b83f48ba303b1491ee441, type: 2}
+  - {fileID: 11400000, guid: 79688e74fb1aa4645801ad735bbcb241, type: 2}
+  - {fileID: 11400000, guid: e47c44c4e50a38d429259d4d05f9b194, type: 2}
+  - {fileID: 11400000, guid: 9829f8acc2bc4d74dbe63b447b91408f, type: 2}
+  stageRules:
+  - {fileID: 11400000, guid: ec59a1608e8d9444f8121bde9b02a019, type: 2}
+  waves:
+  - {fileID: 11400000, guid: f148d0ea85c058742885a3265e8435b2, type: 2}
+  - {fileID: 11400000, guid: 63b4a707bf70ffb47b581d57ecbd2f6d, type: 2}
+  stageStartLogMessage: 
+  stageClearLogMessage: 

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: TestData
+  m_EditorClassIdentifier: Assembly-CSharp::NovelScenarioData
+  pages:
+  - pageName: 
+    useFadeOnEnter: 0
+    backgroundSprite: {fileID: 878130953088834983, guid: ca8f528223780374798b02082b406212, type: 3}
+    bgmClip: {fileID: 0}
+    stopBgmIfClipIsEmpty: 1
+    startStandings: []
+    blocks:
+    - speakerName: 
+      bodyText: "\u3042\u3042\u3042\u3042\u3042\u3042\u3042\u3042"
+      standingChanges:
+      - position: 0
+        characterSprite: {fileID: 3415416665201964701, guid: a1067ce4b35e17d4d885c2de151cb36b, type: 3}
+        visible: 1
+      - position: 2
+        characterSprite: {fileID: -6511979715553886417, guid: e10bc7c0dcbceeb47802e2fc21548fb5, type: 3}
+        visible: 1
+      hidePositions: 
+      hideAllStandings: 0
+    - speakerName: 
+      bodyText: "\u3048\u3048\u3048\u3048\u3048\u3048\u3048\u3048\u3048"
+      standingChanges:
+      - position: 0
+        characterSprite: {fileID: 3415416665201964701, guid: a1067ce4b35e17d4d885c2de151cb36b, type: 3}
+        visible: 1
+      - position: 2
+        characterSprite: {fileID: -6511979715553886417, guid: e10bc7c0dcbceeb47802e2fc21548fb5, type: 3}
+        visible: 1
+      hidePositions: 
+      hideAllStandings: 0

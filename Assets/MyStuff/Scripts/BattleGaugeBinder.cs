@@ -7,6 +7,7 @@ using TurnBasedBattle;
 public class BattleGaugeBinder : MonoBehaviour
 {
     [Header("Units")]
+    [SerializeField] private BattleManager battleManager;
     [SerializeField] private BattleUnit playerUnit;
     [SerializeField] private BattleUnit enemyUnit;
 
@@ -15,13 +16,42 @@ public class BattleGaugeBinder : MonoBehaviour
     [SerializeField] private WorldBarGauge playerMpGauge;
     [SerializeField] private WorldBarGauge enemyHpGauge;
 
-    private void Start()
+    private void Awake()
     {
+        if (battleManager == null)
+        {
+            battleManager = FindAnyObjectByType<BattleManager>();
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (battleManager != null)
+        {
+            battleManager.OnEnemyUnitChanged += HandleEnemyUnitChanged;
+        }
+
+        SyncUnitsFromBattleManager();
         RefreshImmediate();
     }
 
-    private void Update()
+    private void OnDisable()
     {
+        if (battleManager != null)
+        {
+            battleManager.OnEnemyUnitChanged -= HandleEnemyUnitChanged;
+        }
+    }
+
+    private void Start()
+    {
+        SyncUnitsFromBattleManager();
+        RefreshImmediate();
+    }
+
+    private void LateUpdate()
+    {
+        SyncUnitsFromBattleManager();
         Refresh();
     }
 
@@ -31,18 +61,18 @@ public class BattleGaugeBinder : MonoBehaviour
         {
             if (playerHpGauge != null)
             {
-                playerHpGauge.SetRatio((float)playerUnit.CurrentHP / Mathf.Max(1, playerUnit.MaxHP));
+                playerHpGauge.SetValue(playerUnit.CurrentHP, playerUnit.MaxHP);
             }
 
             if (playerMpGauge != null)
             {
-                playerMpGauge.SetRatio((float)playerUnit.CurrentMP / Mathf.Max(1, playerUnit.MaxMP));
+                playerMpGauge.SetValue(playerUnit.CurrentMP, playerUnit.MaxMP);
             }
         }
 
         if (enemyUnit != null && enemyHpGauge != null)
         {
-            enemyHpGauge.SetRatio((float)enemyUnit.CurrentHP / Mathf.Max(1, enemyUnit.MaxHP));
+            enemyHpGauge.SetValue(enemyUnit.CurrentHP, enemyUnit.MaxHP);
         }
     }
 
@@ -64,6 +94,41 @@ public class BattleGaugeBinder : MonoBehaviour
         if (enemyUnit != null && enemyHpGauge != null)
         {
             enemyHpGauge.SetImmediate((float)enemyUnit.CurrentHP / Mathf.Max(1, enemyUnit.MaxHP));
+        }
+    }
+
+    private void HandleEnemyUnitChanged(BattleUnit nextEnemyUnit)
+    {
+        if (nextEnemyUnit == null)
+        {
+            return;
+        }
+
+        enemyUnit = nextEnemyUnit;
+        WorldBarGauge nextEnemyGauge = nextEnemyUnit.GetComponentInChildren<WorldBarGauge>(true);
+        if (nextEnemyGauge != null)
+        {
+            enemyHpGauge = nextEnemyGauge;
+        }
+
+        RefreshImmediate();
+    }
+
+    private void SyncUnitsFromBattleManager()
+    {
+        if (battleManager == null)
+        {
+            return;
+        }
+
+        if (battleManager.CurrentPlayerUnit != null)
+        {
+            playerUnit = battleManager.CurrentPlayerUnit;
+        }
+
+        if (battleManager.CurrentEnemyUnit != null && battleManager.CurrentEnemyUnit != enemyUnit)
+        {
+            HandleEnemyUnitChanged(battleManager.CurrentEnemyUnit);
         }
     }
 }

@@ -10,6 +10,23 @@ public class MagicManager : MonoBehaviour
     [SerializeField] private BattleUnit enemyUnit;
     [SerializeField] private SpellTooltipPresenter tooltipPresenter;
 
+    private void OnEnable()
+    {
+        if (battleManager != null)
+        {
+            battleManager.OnEnemyUnitChanged += HandleEnemyUnitChanged;
+            HandleEnemyUnitChanged(battleManager.CurrentEnemyUnit);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (battleManager != null)
+        {
+            battleManager.OnEnemyUnitChanged -= HandleEnemyUnitChanged;
+        }
+    }
+
     public void SelectMagicByMemoryIndex(int memoryIndex)
     {
         if (battleManager == null)
@@ -56,7 +73,8 @@ public class MagicManager : MonoBehaviour
         }
 
         RememberedSpell selectedSpell = spells[memoryIndex];
-        bool success = battleManager.TryQueuePlayerSpell(nextSlotIndex, selectedSpell, enemyUnit);
+        BattleUnit targetEnemy = battleManager.CurrentEnemyUnit != null ? battleManager.CurrentEnemyUnit : enemyUnit;
+        bool success = battleManager.TryQueuePlayerSpell(nextSlotIndex, selectedSpell, targetEnemy);
 
         if (!success)
         {
@@ -117,6 +135,14 @@ public class MagicManager : MonoBehaviour
         if (tooltipPresenter != null)
         {
             tooltipPresenter.Clear();
+        }
+    }
+
+    private void HandleEnemyUnitChanged(BattleUnit nextEnemyUnit)
+    {
+        if (nextEnemyUnit != null)
+        {
+            enemyUnit = nextEnemyUnit;
         }
     }
 

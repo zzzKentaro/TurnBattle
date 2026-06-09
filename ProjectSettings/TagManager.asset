@@ -50,5 +50,11 @@ TagManager:
   - name: UI
     uniqueID: 1389234071
     locked: 0
+  - name: MenuPanel
+    uniqueID: 3718999055
+    locked: 0
+  - name: MenuSlot
+    uniqueID: 3686964177
+    locked: 0
   m_RenderingLayers:
   - Default

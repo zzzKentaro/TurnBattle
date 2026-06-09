@@ -9,6 +9,7 @@ using TurnBasedBattle;
 public class BattleStatusWorldView : MonoBehaviour
 {
     [Header("Units")]
+    [SerializeField] private BattleManager battleManager;
     [SerializeField] private BattleUnit playerUnit;
     [SerializeField] private BattleUnit enemyUnit;
 
@@ -20,6 +21,31 @@ public class BattleStatusWorldView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI enemyDetailText;
     [SerializeField] private bool showPlayerStacksInDetailText = false;
     [SerializeField] private bool showEnemyStacksInDetailText = false;
+
+    private void Awake()
+    {
+        if (battleManager == null)
+        {
+            battleManager = FindAnyObjectByType<BattleManager>();
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (battleManager != null)
+        {
+            battleManager.OnEnemyUnitChanged += HandleEnemyUnitChanged;
+            HandleEnemyUnitChanged(battleManager.CurrentEnemyUnit);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (battleManager != null)
+        {
+            battleManager.OnEnemyUnitChanged -= HandleEnemyUnitChanged;
+        }
+    }
 
     private void Update()
     {
@@ -83,5 +109,32 @@ public class BattleStatusWorldView : MonoBehaviour
             $"DEF:{unit.GetDefenseCoefficientModifierTotal():+0.00;-0.00;0.00}");
 
         return sb.ToString();
+    }
+
+    private void HandleEnemyUnitChanged(BattleUnit nextEnemyUnit)
+    {
+        if (nextEnemyUnit != null)
+        {
+            enemyUnit = nextEnemyUnit;
+            TextMeshProUGUI nextEnemyHpText = FindEnemyHpText(nextEnemyUnit);
+            if (nextEnemyHpText != null)
+            {
+                enemyHpText = nextEnemyHpText;
+            }
+        }
+    }
+
+    private TextMeshProUGUI FindEnemyHpText(BattleUnit unit)
+    {
+        TextMeshProUGUI[] texts = unit.GetComponentsInChildren<TextMeshProUGUI>(true);
+        for (int i = 0; i < texts.Length; i++)
+        {
+            if (texts[i] != null && texts[i].text.Contains("/"))
+            {
+                return texts[i];
+            }
+        }
+
+        return null;
     }
 }

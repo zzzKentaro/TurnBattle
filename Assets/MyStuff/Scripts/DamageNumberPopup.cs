@@ -58,6 +58,18 @@ public class DamageNumberPopup : MonoBehaviour
         ApplySorting();
     }
 
+    public void SetDigitColor(Color color)
+    {
+        digitColor = color;
+        for (int i = 0; i < activeDigits.Count; i++)
+        {
+            if (activeDigits[i] == null) continue;
+            Color c = digitColor;
+            c.a = activeDigits[i].color.a;
+            activeDigits[i].color = c;
+        }
+    }
+
     public void Play(int damage)
     {
         if (digitPrefab == null)

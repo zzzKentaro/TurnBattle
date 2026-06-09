@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 47ace041e870a384e9f92be46114eef7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -353653986207746667
+    second: NA_Glitter_004_0
+  - first:
+      213: 7959016979720784952
+    second: NA_Glitter_004_1
+  - first:
+      213: -761910359937956137
+    second: NA_Glitter_004_2
+  - first:
+      213: 2616810898649323808
+    second: NA_Glitter_004_3
+  - first:
+      213: -8379046431645649409
+    second: NA_Glitter_004_4
+  - first:
+      213: -6022823970327248881
+    second: NA_Glitter_004_5
+  - first:
+      213: 8088484765334265042
+    second: NA_Glitter_004_6
+  - first:
+      213: -1492686715963208376
+    second: NA_Glitter_004_7
+  - first:
+      213: -5507733562114488783
+    second: NA_Glitter_004_8
+  - first:
+      213: 1865815612203263337
+    second: NA_Glitter_004_9
+  - first:
+      213: -2435155828876098370
+    second: NA_Glitter_004_10
+  - first:
+      213: 6888406980534642523
+    second: NA_Glitter_004_11
+  - first:
+      213: 1272366534221447069
+    second: NA_Glitter_004_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NA_Glitter_004_0
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1349
+        width: 498
+        height: 498
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 595bfa2c291971bf0800000000000000
+      internalID: -353653986207746667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_1
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 826
+        width: 1002
+        height: 1051
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83c4f8d36cb147e60800000000000000
+      internalID: 7959016979720784952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_2
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 1150
+        width: 147
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d6453d70962d65f0800000000000000
+      internalID: -761910359937956137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_3
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1018
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0291d5ad5a7c05420800000000000000
+      internalID: 2616810898649323808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_4
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 879
+        width: 120
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff5b14d1aa5a7bb80800000000000000
+      internalID: -8379046431645649409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_5
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 993
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f00cfef5281aa6ca0800000000000000
+      internalID: -6022823970327248881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_6
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 878
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dc58e81a02104070800000000000000
+      internalID: 8088484765334265042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_7
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 237
+        width: 706
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84d81162759e84be0800000000000000
+      internalID: -1492686715963208376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_8
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 859
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1364ba8a1899093b0800000000000000
+      internalID: -5507733562114488783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_9
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 810
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 965e0cde965b4e910800000000000000
+      internalID: 1865815612203263337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_10
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 800
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb44e17fca6943ed0800000000000000
+      internalID: -2435155828876098370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_11
+      rect:
+        serializedVersion: 2
+        x: 1676
+        y: 810
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b57a61707a9889f50800000000000000
+      internalID: 6888406980534642523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Glitter_004_12
+      rect:
+        serializedVersion: 2
+        x: 1289
+        y: 419
+        width: 376
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9f3d502f9a58a110800000000000000
+      internalID: 1272366534221447069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      NA_Glitter_004_0: -353653986207746667
+      NA_Glitter_004_1: 7959016979720784952
+      NA_Glitter_004_10: -2435155828876098370
+      NA_Glitter_004_11: 6888406980534642523
+      NA_Glitter_004_12: 1272366534221447069
+      NA_Glitter_004_2: -761910359937956137
+      NA_Glitter_004_3: 2616810898649323808
+      NA_Glitter_004_4: -8379046431645649409
+      NA_Glitter_004_5: -6022823970327248881
+      NA_Glitter_004_6: 8088484765334265042
+      NA_Glitter_004_7: -1492686715963208376
+      NA_Glitter_004_8: -5507733562114488783
+      NA_Glitter_004_9: 1865815612203263337
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

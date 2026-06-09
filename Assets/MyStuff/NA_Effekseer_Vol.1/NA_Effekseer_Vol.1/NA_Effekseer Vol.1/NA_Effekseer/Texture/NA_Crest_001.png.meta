@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: a0d806f41fbd9b94da4c67c334f069a3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7219734831056984853
+    second: NA_Crest_001_0
+  - first:
+      213: -3464018685925710214
+    second: NA_Crest_001_1
+  - first:
+      213: -303459872699049092
+    second: NA_Crest_001_2
+  - first:
+      213: -1176427130513252042
+    second: NA_Crest_001_3
+  - first:
+      213: -8764154778252727354
+    second: NA_Crest_001_4
+  - first:
+      213: -4589718318908576695
+    second: NA_Crest_001_5
+  - first:
+      213: -9067766988800963717
+    second: NA_Crest_001_6
+  - first:
+      213: 4005403769627182821
+    second: NA_Crest_001_7
+  - first:
+      213: -4867202665217619755
+    second: NA_Crest_001_8
+  - first:
+      213: 6011074824699930813
+    second: NA_Crest_001_9
+  - first:
+      213: -1375450505490852636
+    second: NA_Crest_001_10
+  - first:
+      213: 9209003760885564135
+    second: NA_Crest_001_11
+  - first:
+      213: -4060509186123530235
+    second: NA_Crest_001_12
+  - first:
+      213: 8469413663963451605
+    second: NA_Crest_001_13
+  - first:
+      213: 5722852496468842155
+    second: NA_Crest_001_14
+  - first:
+      213: 94632261697317752
+    second: NA_Crest_001_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NA_Crest_001_0
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 853
+        width: 382
+        height: 606
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51b9aa9b396a13460800000000000000
+      internalID: 7219734831056984853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_1
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 788
+        width: 255
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a76251abb555defc0800000000000000
+      internalID: -3464018685925710214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_2
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 384
+        width: 297
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7b10348ad4e9cbf0800000000000000
+      internalID: -303459872699049092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_3
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 824
+        width: 234
+        height: 472
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63120adf1cd7cafe0800000000000000
+      internalID: -1176427130513252042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_4
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 384
+        width: 297
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cb24b5e9a77f5680800000000000000
+      internalID: -8764154778252727354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_5
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 853
+        width: 382
+        height: 606
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94ce95e918b0e40c0800000000000000
+      internalID: -4589718318908576695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_6
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 788
+        width: 255
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7b418e77f1d82280800000000000000
+      internalID: -9067766988800963717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_7
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 279
+        width: 270
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e683a6c18d069730800000000000000
+      internalID: 4005403769627182821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_8
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 337
+        width: 250
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d88ed9a6f8347cb0800000000000000
+      internalID: -4867202665217619755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_9
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 226
+        width: 96
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db8688c74b0ab6350800000000000000
+      internalID: 6011074824699930813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_10
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 120
+        width: 94
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e4161e7d0b69ece0800000000000000
+      internalID: -1375450505490852636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_11
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 226
+        width: 96
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e202de0124fccf70800000000000000
+      internalID: 9209003760885564135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_12
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 279
+        width: 270
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50085e1a86c26a7c0800000000000000
+      internalID: -4060509186123530235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_13
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 337
+        width: 250
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d09160cad6698570800000000000000
+      internalID: 8469413663963451605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_14
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 187
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba69bf94608ab6f40800000000000000
+      internalID: 5722852496468842155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NA_Crest_001_15
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 187
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87ba2c66a83305100800000000000000
+      internalID: 94632261697317752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      NA_Crest_001_0: 7219734831056984853
+      NA_Crest_001_1: -3464018685925710214
+      NA_Crest_001_10: -1375450505490852636
+      NA_Crest_001_11: 9209003760885564135
+      NA_Crest_001_12: -4060509186123530235
+      NA_Crest_001_13: 8469413663963451605
+      NA_Crest_001_14: 5722852496468842155
+      NA_Crest_001_15: 94632261697317752
+      NA_Crest_001_2: -303459872699049092
+      NA_Crest_001_3: -1176427130513252042
+      NA_Crest_001_4: -8764154778252727354
+      NA_Crest_001_5: -4589718318908576695
+      NA_Crest_001_6: -9067766988800963717
+      NA_Crest_001_7: 4005403769627182821
+      NA_Crest_001_8: -4867202665217619755
+      NA_Crest_001_9: 6011074824699930813
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

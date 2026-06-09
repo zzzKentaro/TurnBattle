@@ -10,6 +10,10 @@ namespace TurnBasedBattle
         public float levelAttackCoefficientBonus;
         public float useCountAttackCoefficientBonus;
         public float carriedSequenceAttackCoefficientBonus;
+        public float customAttackCoefficientBonus;
+        public float customDefenseCoefficientBonus;
+        public float finalDamageMultiplier = 1f;
+        public int flatDamageBonus;
         public int orderIndex;
         public BattleTuning tuning;
     }
@@ -44,6 +48,7 @@ namespace TurnBasedBattle
                 + input.levelAttackCoefficientBonus
                 + input.useCountAttackCoefficientBonus
                 + input.carriedSequenceAttackCoefficientBonus
+                + input.customAttackCoefficientBonus
                 + tuning.GetCommonOrderAttackCoefficientBonus(input.orderIndex)
                 + spell.GetOrderSpecificAttackCoefficientBonus(input.orderIndex)
                 + caster.GetAttackCoefficientModifierTotal()
@@ -53,6 +58,7 @@ namespace TurnBasedBattle
             attackCoefficient = Mathf.Max(0.01f, attackCoefficient);
 
             float defenseCoefficient = spell.DefenseCoefficient
+                + input.customDefenseCoefficientBonus
                 + target.GetDefenseCoefficientModifierTotal()
                 - spell.DefensePenetration
                 - tuning.GetEarthDefenseCoefficientPenalty(target.GetElementStacks(ElementType.Earth));
@@ -71,7 +77,8 @@ namespace TurnBasedBattle
 
             float randomValue = Random.Range(tuning.RandomMin, tuning.RandomMax);
             float raw = (sourceAttack * attackCoefficient * elementMultiplier) - (target.GetCurrentDefense() * defenseCoefficient);
-            int damage = Mathf.Max(1, Mathf.RoundToInt(raw * critMultiplier * randomValue));
+            float multiplier = Mathf.Max(0f, input.finalDamageMultiplier);
+            int damage = Mathf.Max(1, Mathf.RoundToInt((raw * critMultiplier * randomValue * multiplier) + input.flatDamageBonus));
 
             return new DamageCalculationResult
             {

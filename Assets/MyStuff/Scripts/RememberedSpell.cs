@@ -4,7 +4,7 @@ using UnityEngine;
 namespace TurnBasedBattle
 {
     /// <summary>
-    /// プレイヤーが記憶（ラーニング）した魔法の状態やレベルを保持するクラス。
+    /// Stores the learned spell state, including level and use count.
     /// </summary>
     [Serializable]
     public class RememberedSpell
@@ -33,18 +33,7 @@ namespace TurnBasedBattle
                 return int.MaxValue;
             }
 
-            switch (level)
-            {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                    return 1;
-                case 5:
-                    return 20;
-                default:
-                    return int.MaxValue;
-            }
+            return spellData.GetRequiredUsesForNextLevel(level);
         }
 
         public void RegisterUse()
@@ -82,7 +71,7 @@ namespace TurnBasedBattle
                 return 0f;
             }
 
-            return Mathf.Max(0, level - 1) * spellData.LevelAttackCoefficientPerLevel;
+            return spellData.GetLevelAttackCoefficientBonus(level);
         }
 
         public float GetUseCountAttackCoefficientBonus()

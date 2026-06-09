@@ -1,17 +1,17 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 /// <summary>
-/// /// ワールド座標だけで「particle → damage popup」を再生する管理クラス
-/// /// Canvas / RectTransform は使わない
-/// /// BattleManager から待ちやすいように Routine 形式のラッパーも用意している。 
-/// /// SpellData に登録した個別 particle を
-/// /// 単発ヒット / 多段ヒットの両方で使える。 
-/// /// /// この版では、多段ヒット時の popup は 
-/// /// 「同じ場所」に「少しずつ時間差で」表示する。
-/// /// 位置のランダムずらしや段階的な位置オフセットは行わない。
+/// /// ワールド座標だけで「particle ↁEdamage popup」を再生する管琁E��ラス
+/// /// Canvas / RectTransform は使わなぁE
+/// /// BattleManager から征E��めE��ぁE��ぁE�� Routine 形式�EラチE��ーも用意してぁE��、E
+/// /// SpellData に登録した個別 particle めE
+/// /// 単発ヒッチE/ 多段ヒット�E両方で使える、E
+/// /// /// こ�E版では、多段ヒット時の popup は 
+/// /// 「同じ場所」に「少しずつ時間差で」表示する、E
+/// /// 位置のランダムずらしや段階的な位置オフセチE��は行わなぁE��E
 /// /// </summary> 
 public class DamageSequencePlayer : MonoBehaviour
 {
@@ -30,6 +30,8 @@ public class DamageSequencePlayer : MonoBehaviour
         public AudioClip effectSe;
         public ShakeTargetType shakeTargetType;
         public bool suppressHitSound;
+        public bool suppressPopup;
+        public bool isHealing;
     }
 
     [Header("Parents (Optional)")]
@@ -54,6 +56,8 @@ public class DamageSequencePlayer : MonoBehaviour
     [SerializeField] private int popupBaseSortingOrder = 200;
     [SerializeField] private int popupSortingOrderStep = 1;
     [SerializeField] private float popupSpawnDelayAfterEffect = 0f;
+    [SerializeField] private Color damagePopupColor = Color.white;
+    [SerializeField] private Color healingPopupColor = new Color(0.35f, 1f, 0.45f, 1f);
 
     [Header("Sequence")]
     [SerializeField] private float delayBetweenSequentialHits = 0.05f;
@@ -132,9 +136,9 @@ public class DamageSequencePlayer : MonoBehaviour
         yield return CoPlayHit(target, damage, shakeTargetType, effectPrefab, null, effectSe);
     }
 
-    public IEnumerator PlayHitRoutine(DamageTargetAnchor target, int damage, ShakeTargetType shakeTargetType, OneShotParticleCallback effectPrefab, AudioClip effectSe, bool suppressHitSound)
+    public IEnumerator PlayHitRoutine(DamageTargetAnchor target, int damage, ShakeTargetType shakeTargetType, OneShotParticleCallback effectPrefab, AudioClip effectSe, bool suppressHitSound, bool suppressPopup = false, bool isHealing = false)
     {
-        yield return CoPlayHit(target, damage, shakeTargetType, effectPrefab, null, effectSe, suppressHitSound);
+        yield return CoPlayHit(target, damage, shakeTargetType, effectPrefab, null, effectSe, suppressHitSound, suppressPopup, isHealing);
     }
 
     public IEnumerator PlayMultiHitRoutine(IEnumerable<DamageHitRequest> requests)
@@ -154,7 +158,9 @@ public class DamageSequencePlayer : MonoBehaviour
      OneShotParticleCallback effectPrefab = null,
      Action onFinished = null,
      AudioClip effectSe = null,
-     bool suppressHitSound = false)
+     bool suppressHitSound = false,
+     bool suppressPopup = false,
+     bool isHealing = false)
     {
         if (target == null)
         {
@@ -169,12 +175,14 @@ public class DamageSequencePlayer : MonoBehaviour
             popupBaseSortingOrder,
             effectPrefab,
             effectSe,
-            suppressHitSound);   // ← null ではなく effectSe を渡す
+            suppressHitSound,
+            suppressPopup,
+            isHealing);   // ↁEnull ではなぁEeffectSe を渡ぁE
         onFinished?.Invoke();
     } /// <summary> 
-      /// 多段ヒット用。 
-      /// /// effect は1回だけ再生し、popup は複数回・時間差ありで出す。 
-      /// /// popup の位置は毎回同じ。 
+      /// 多段ヒット用、E
+      /// /// effect は1回だけ�E生し、popup は褁E��回�E時間差ありで出す、E
+      /// /// popup の位置は毎回同じ、E
       /// /// </summary>
     public IEnumerator CoPlayMultiHitSameEffect(IEnumerable<DamageHitRequest> requests, Action onFinished = null)
     {
@@ -201,7 +209,10 @@ public class DamageSequencePlayer : MonoBehaviour
             DamageHitRequest request = requestList[i];
             if (request.target == null) { continue; }
             int popupSortingOrder = popupBaseSortingOrder + (i * popupSortingOrderStep);
-            SpawnPopup(request.target.GetDamageWorldPosition(), request.damage, popupSortingOrder, request.shakeTargetType, request.suppressHitSound);
+            if (!request.suppressPopup)
+            {
+                SpawnPopup(request.target.GetDamageWorldPosition(), request.damage, popupSortingOrder, request.shakeTargetType, request.suppressHitSound, request.isHealing);
+            }
             if (i < requestList.Count - 1 && multiHitPopupInterval > 0f)
             {
                 yield return WaitForSecondsSafe(multiHitPopupInterval);
@@ -209,7 +220,7 @@ public class DamageSequencePlayer : MonoBehaviour
         }
         onFinished?.Invoke();
     } /// <summary> 
-      /// ヒットごとに effect → popup を順番に再生したい場合用。 
+      /// ヒットごとに effect ↁEpopup を頁E��に再生したぁE��合用、E
       /// /// </summary> 
     public IEnumerator CoPlayHitsSequentially(IEnumerable<DamageHitRequest> requests, Action onFinished = null)
     {
@@ -221,7 +232,7 @@ public class DamageSequencePlayer : MonoBehaviour
         for (int i = 0; i < requestList.Count; i++)
         {
             int sortingOrder = popupBaseSortingOrder + (i * popupSortingOrderStep);
-            yield return CoPlayOneInternal(requestList[i].target, requestList[i].damage, requestList[i].shakeTargetType, sortingOrder, requestList[i].effectPrefab, requestList[i].effectSe, requestList[i].suppressHitSound);
+            yield return CoPlayOneInternal(requestList[i].target, requestList[i].damage, requestList[i].shakeTargetType, sortingOrder, requestList[i].effectPrefab, requestList[i].effectSe, requestList[i].suppressHitSound, requestList[i].suppressPopup, requestList[i].isHealing);
             if (i < requestList.Count - 1 && delayBetweenSequentialHits > 0f)
             {
                 yield return WaitForSecondsSafe(delayBetweenSequentialHits);
@@ -229,7 +240,7 @@ public class DamageSequencePlayer : MonoBehaviour
         }
         onFinished?.Invoke();
     }
-    private IEnumerator CoPlayOneInternal(DamageTargetAnchor target, int damage, ShakeTargetType shakeTargetType, int popupSortingOrder, OneShotParticleCallback overrideEffectPrefab, AudioClip overrideEffectSe = null, bool suppressHitSound = false)
+    private IEnumerator CoPlayOneInternal(DamageTargetAnchor target, int damage, ShakeTargetType shakeTargetType, int popupSortingOrder, OneShotParticleCallback overrideEffectPrefab, AudioClip overrideEffectSe = null, bool suppressHitSound = false, bool suppressPopup = false, bool isHealing = false)
     {
         if (target == null) { yield break; }
         OneShotParticleCallback selectedEffectPrefab = overrideEffectPrefab != null ? overrideEffectPrefab : hitEffectPrefab;
@@ -244,7 +255,10 @@ public class DamageSequencePlayer : MonoBehaviour
         {
             yield return WaitForSecondsSafe(popupSpawnDelayAfterEffect);
         }
-        SpawnPopup(target.GetDamageWorldPosition(), damage, popupSortingOrder, shakeTargetType, suppressHitSound);
+        if (!suppressPopup)
+        {
+            SpawnPopup(target.GetDamageWorldPosition(), damage, popupSortingOrder, shakeTargetType, suppressHitSound, isHealing);
+        }
     }
     private OneShotParticleCallback SpawnEffect(OneShotParticleCallback effectPrefab, AudioClip effectSe, Vector3 worldPosition, Action onFinished)
     {
@@ -278,7 +292,7 @@ public class DamageSequencePlayer : MonoBehaviour
             Debug.LogWarning($"DamageSequencePlayer: Particle effect '{effectName}' did not finish within {timeout:0.00} seconds. Check Looping or Stop Action settings.");
         }
     }
-    private DamageNumberPopup SpawnPopup(Vector3 worldPosition, int damage, int popupSortingOrder, ShakeTargetType shakeTargetType, bool suppressHitSound = false)
+    private DamageNumberPopup SpawnPopup(Vector3 worldPosition, int damage, int popupSortingOrder, ShakeTargetType shakeTargetType, bool suppressHitSound = false, bool isHealing = false)
     {
         if (!suppressHitSound)
         {
@@ -289,6 +303,7 @@ public class DamageSequencePlayer : MonoBehaviour
         if (damagePopupPrefab == null) { return null; }
         DamageNumberPopup popup = InstantiateWorldObject(damagePopupPrefab, worldPosition, popupParent);
         popup.SetSorting(popupSortingLayerName, popupSortingOrder);
+        popup.SetDigitColor(isHealing ? healingPopupColor : damagePopupColor);
         popup.SetWorldPosition(worldPosition);
         popup.Play(damage);
         return popup;

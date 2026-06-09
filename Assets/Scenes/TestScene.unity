@@ -169,6 +169,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 23507378}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -177,6 +181,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -308,6 +314,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 989837145}
   iconRenderer: {fileID: 59447023}
   labelText: {fileID: 930190685}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -316,6 +326,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -326,7 +338,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -353,7 +365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &34907218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,6 +435,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmitIndex:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &34907220
 Transform:
   m_ObjectHideFlags: 0
@@ -752,6 +770,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 117695156}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -760,6 +782,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -1173,6 +1197,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 173496353}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -1181,6 +1209,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -1594,6 +1624,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 220613344}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -1602,6 +1636,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -1831,6 +1867,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 280270557}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -1839,6 +1879,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -1970,6 +2012,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1461143274}
   iconRenderer: {fileID: 137674643}
   labelText: {fileID: 333106656}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -1978,6 +2024,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -1988,7 +2036,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2276,6 +2324,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 334282755}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -2284,6 +2336,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -2413,6 +2467,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 344929083}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -2421,6 +2479,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -3110,6 +3170,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1588417794}
   iconRenderer: {fileID: 1419394509}
   labelText: {fileID: 394922077}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -3118,6 +3182,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -3128,7 +3194,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3294,7 +3360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &450635391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3364,6 +3430,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmitIndex:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &450635393
 Transform:
   m_ObjectHideFlags: 0
@@ -3575,6 +3647,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 280270557}
   iconRenderer: {fileID: 862208818}
   labelText: {fileID: 1631448883}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -3583,6 +3659,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -3593,7 +3671,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3792,6 +3870,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1071901121}
   iconRenderer: {fileID: 1696648155}
   labelText: {fileID: 1068773781}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -3800,6 +3882,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -3810,7 +3894,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4076,6 +4160,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 334282755}
   iconRenderer: {fileID: 180520037}
   labelText: {fileID: 1354505019}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -4084,6 +4172,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -4094,7 +4184,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4349,6 +4439,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1365203310}
   iconRenderer: {fileID: 924907579}
   labelText: {fileID: 539663313}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -4357,6 +4451,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -4367,7 +4463,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4429,6 +4525,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 173496353}
   iconRenderer: {fileID: 1759111771}
   labelText: {fileID: 495444865}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -4437,6 +4537,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -4447,7 +4549,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4702,6 +4804,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 344929083}
   iconRenderer: {fileID: 370779225}
   labelText: {fileID: 1358810326}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -4710,6 +4816,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -4720,7 +4828,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4873,6 +4981,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1001713924}
   iconRenderer: {fileID: 390304475}
   labelText: {fileID: 53641299}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -4881,6 +4993,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -4891,7 +5005,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4984,6 +5098,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1822057890}
   iconRenderer: {fileID: 1736525746}
   labelText: {fileID: 1447108350}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -4992,6 +5110,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -5002,7 +5122,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5153,6 +5273,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 901696090}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -5161,6 +5285,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -5814,6 +5940,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 117695156}
   iconRenderer: {fileID: 2070260116}
   labelText: {fileID: 1300131950}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -5822,6 +5952,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -5832,7 +5964,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5892,6 +6024,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 989837145}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -5900,6 +6036,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -6029,6 +6167,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1001713924}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -6037,6 +6179,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -6415,6 +6559,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1071901121}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -6423,6 +6571,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -6881,6 +7031,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1220618907}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -6889,6 +7043,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -7462,6 +7618,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1365203310}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -7470,6 +7630,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -8213,6 +8375,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1461143274}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -8221,6 +8387,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -8352,6 +8520,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1220618907}
   iconRenderer: {fileID: 2056382812}
   labelText: {fileID: 1836036682}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -8360,6 +8532,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -8370,7 +8544,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8397,7 +8571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1493568380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8467,6 +8641,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmitIndex:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1493568382
 Transform:
   m_ObjectHideFlags: 0
@@ -8856,6 +9036,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1588417794}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -8864,6 +9048,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -9130,7 +9316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1666136514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9167,6 +9353,12 @@ MonoBehaviour:
   firstRepeatDelay: 0.25
   repeatInterval: 0.1
   onCancel:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmitIndex:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1666136515
@@ -9986,6 +10178,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 901696090}
   iconRenderer: {fileID: 1565196475}
   labelText: {fileID: 917328477}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -9994,6 +10190,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -10004,7 +10202,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10201,6 +10399,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 1822057890}
   iconRenderer: {fileID: 0}
   labelText: {fileID: 0}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -10209,6 +10411,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -10751,7 +10955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2001576296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10821,6 +11025,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSelectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmitIndex:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &2001576298
 Transform:
   m_ObjectHideFlags: 0
@@ -10893,6 +11103,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 23507378}
   iconRenderer: {fileID: 1704506065}
   labelText: {fileID: 433973463}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -10901,6 +11115,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -10911,7 +11127,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11407,6 +11623,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1898276747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2095716088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095716090}
+  - component: {fileID: 2095716089}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2095716089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095716088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d396bcb8480c24eb784eebe6096a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Effekseer::Effekseer.EffekseerEmitter
+  TimingOfUpdate: 0
+  EmitterScale: 1
+  TimeScale: 0
+  effectAsset: {fileID: 11400000, guid: 739fa812819b3ce4398718b4ed0f8014, type: 2}
+  playOnStart: 0
+  isLooping: 1
+--- !u!4 &2095716090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095716088}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.93, y: -0.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2109809025
 GameObject:
   m_ObjectHideFlags: 0
@@ -11605,6 +11871,10 @@ MonoBehaviour:
   scaleTarget: {fileID: 220613344}
   iconRenderer: {fileID: 701203341}
   labelText: {fileID: 1776506744}
+  useSelectionSprites: 1
+  normalSprite: {fileID: 0}
+  selectedSprite: {fileID: 0}
+  useInitialSpriteAsNormalSprite: 1
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 1, g: 0.9, b: 0.4, a: 1}
   changeIconColor: 0
@@ -11613,6 +11883,8 @@ MonoBehaviour:
   changeLabelColor: 0
   normalLabelColor: {r: 1, g: 1, b: 1, a: 1}
   selectedLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  dimWhenNotInteractable: 1
+  disabledAlpha: 0.45
   normalScale: {x: 3, y: 1, z: 1}
   selectedScale: {x: 5, y: 1, z: 1}
   scaleTweenDuration: 0.15
@@ -11623,7 +11895,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2122967794}
         m_TargetAssemblyTypeName: TitleMenuActions, Assembly-CSharp
-        m_MethodName: CancelMenu
+        m_MethodName: NextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11633,6 +11905,95 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1001 &666447524478270544
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 34477947175011913, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_Name
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 567977992278526871, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2122967794}
+    - target: {fileID: 3079354609543130754, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2122967794}
+    - target: {fileID: 3946690792429320825, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2122967794}
+    - target: {fileID: 5863381007577982949, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2122967794}
+    - target: {fileID: 6173164379984551698, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173164379984551698, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173164379984551698, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173164379984551698, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173164379984551698, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173164379984551698, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173164379984551698, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173164379984551698, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173164379984551698, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173164379984551698, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236904169949746981, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2122967794}
+    - target: {fileID: 6476719118664788675, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2122967794}
+    - target: {fileID: 7025770339667555520, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2122967794}
+    - target: {fileID: 7418311504049098874, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2122967794}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 07e2d27f6b23f714480fd5221be9e2ad, type: 3}
 --- !u!1001 &2169956671427747086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11664,6 +12025,10 @@ PrefabInstance:
     - target: {fileID: 4510028051041817275, guid: 171781ba25bcb6f40ac86188de638490, type: 3}
       propertyPath: m_Name
       value: MenuRoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510028051041817275, guid: 171781ba25bcb6f40ac86188de638490, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5819719470244685126, guid: 171781ba25bcb6f40ac86188de638490, type: 3}
       propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -11751,3 +12116,5 @@ SceneRoots:
   - {fileID: 2122967795}
   - {fileID: 1666136515}
   - {fileID: 1066598786}
+  - {fileID: 666447524478270544}
+  - {fileID: 2095716090}

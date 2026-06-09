@@ -26,6 +26,7 @@ public class WorldButton : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("click");
         onClick?.Invoke();
     }
 }
