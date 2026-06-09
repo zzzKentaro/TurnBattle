@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a43496e0798e440ae825e657144c72, type: 3}
+  m_Name: "\u6CC9\u306E\u9B54\u6CD5"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnBasedBattle.SpellData
+  spellId: IZUMI
+  displayName: "\u6CC9\u306E\u9B54\u6CD5"
+  description: "MP cost 30\n\u81EA\u8EAB\u306EHP\u3092\u56DE\u5FA9\u3059\u308B"
+  iconSprite: {fileID: -4199749589138851920, guid: f8f70b08e7feda943853f25914f42ff6, type: 3}
+  impactEffectPrefab: {fileID: 431651327139550526, guid: ff157e6cf7c674e478a66b78000efbb2, type: 3}
+  attackEffectSe: {fileID: 8300000, guid: 7ba6453c734a13640b2ad0658265197e, type: 3}
+  element: 0
+  category: 1
+  targetType: 0
+  mpCost: 30
+  attackCoefficient: 1
+  defenseCoefficient: 1
+  hitCount: 1
+  flatHealAmount: 300
+  stackPerHit: 1
+  useCurrentHpAsAttackSource: 0
+  missingHpAttackCoefficientBonusAtZeroHp: 0
+  allowCritical: 1
+  defensePenetration: 0
+  orderAffinity: 0
+  firstOrderAttackCoefficientBonus: 0
+  secondOrderAttackCoefficientBonus: 0
+  thirdOrderAttackCoefficientBonus: 0
+  nextSpellAttackCoefficientBonus: 0
+  selfAttackStatDelta: 0
+  selfDefenseStatDelta: 0
+  targetAttackStatDelta: 0
+  targetDefenseStatDelta: 0
+  statModifierDurationTurns: 0
+  selfAttackCoefficientDelta: 0
+  selfDefenseCoefficientDelta: 0
+  targetAttackCoefficientDelta: 0
+  targetDefenseCoefficientDelta: 0
+  coefficientModifierDurationTurns: 0
+  levelAttackCoefficientPerLevel: 0.05
+  maxLevel: 6
+  levelGrowthEntries: []
+  useCountAttackCoefficientBonusPerUse: 0
+  capUseCountAttackCoefficientBonus: 0
+  maxUseCountAttackCoefficientBonus: 0
+  permanentSelfAttackDeltaOnUse: 0
+  permanentSelfDefenseDeltaOnUse: 0
+  permanentSelfMaxHpDeltaOnUse: 0
+  permanentSelfMaxMpDeltaOnUse: 0
+  restoreGainedMaxHpOnUse: 1
+  restoreGainedMaxMpOnUse: 1

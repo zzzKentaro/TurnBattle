@@ -103,6 +103,17 @@ namespace TurnBasedBattle
             return track.GetTotal();
         }
 
+        public void ClearStacks(ElementType elementType)
+        {
+            if (elementType == ElementType.None)
+            {
+                return;
+            }
+
+            ElementStackTrack track = GetOrCreateTrack(elementType);
+            track.Clear();
+        }
+
         public void AdvanceTurn()
         {
             EnsureInitialized();

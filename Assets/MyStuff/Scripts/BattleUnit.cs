@@ -84,6 +84,54 @@ namespace TurnBasedBattle
             activeCoefficientModifiers.Clear();
         }
 
+        public void SetEnemySpellPool(IEnumerable<SpellData> spells)
+        {
+            enemySpellPool.Clear();
+            if (spells == null)
+            {
+                return;
+            }
+
+            foreach (SpellData spell in spells)
+            {
+                if (spell != null)
+                {
+                    enemySpellPool.Add(spell);
+                }
+            }
+        }
+
+        public void SetEnemySpellsForWave(IEnumerable<SpellData> spells, bool replaceMemoryBook = true)
+        {
+            SetEnemySpellPool(spells);
+
+            if (!replaceMemoryBook)
+            {
+                return;
+            }
+
+            ClearMemory();
+            LearnSpells(enemySpellPool, false);
+        }
+
+        public void ClearMemory()
+        {
+            memoryBook.Clear();
+        }
+
+        public void LearnSpells(IEnumerable<SpellData> spells, bool duplicateGivesPractice = false)
+        {
+            if (spells == null)
+            {
+                return;
+            }
+
+            foreach (SpellData spell in spells)
+            {
+                memoryBook.LearnSpell(spell, duplicateGivesPractice);
+            }
+        }
+
         public int GetCurrentAttack()
         {
             return Mathf.Max(0, baseStats.attack + permanentAttackBonus + GetStatModifierSum(StatType.Attack));

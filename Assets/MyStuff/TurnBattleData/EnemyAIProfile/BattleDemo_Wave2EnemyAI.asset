@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1293bf38d1f168340835c4224ac92238, type: 3}
+  m_Name: BattleDemo_Wave2EnemyAI
+  m_EditorClassIdentifier: Assembly-CSharp::TurnBasedBattle.EnemyAIProfile
+  spells:
+  - spell: {fileID: 11400000, guid: b6ecba86c52c9654caa198d435b3e572, type: 2}
+    frequency: 1
+    forceOnFirstTurn: 0
+    forceOnTurn: 0
+    onlyOnce: 0
+    earliestTurn: 0
+    initialTotalUseCount: 110
+  - spell: {fileID: 11400000, guid: 1dab27352e0041645a0f2d7a3f667878, type: 2}
+    frequency: 0
+    forceOnFirstTurn: 0
+    forceOnTurn: 15
+    onlyOnce: 1
+    earliestTurn: 7
+    initialTotalUseCount: 0
+  - spell: {fileID: 11400000, guid: b17223943985945469ba83cd5c6bdbdc, type: 2}
+    frequency: 0
+    forceOnFirstTurn: 0
+    forceOnTurn: 0
+    onlyOnce: 1
+    earliestTurn: 0
+    initialTotalUseCount: 0
+  - spell: {fileID: 11400000, guid: cb1aa4b5c01cd0b4b9d7190c8c480d5f, type: 2}
+    frequency: 2
+    forceOnFirstTurn: 0
+    forceOnTurn: 0
+    onlyOnce: 0
+    earliestTurn: 0
+    initialTotalUseCount: 0
+  - spell: {fileID: 11400000, guid: 4bdf5c0409bf77a48826330af0a96b37, type: 2}
+    frequency: 2
+    forceOnFirstTurn: 0
+    forceOnTurn: 0
+    onlyOnce: 0
+    earliestTurn: 0
+    initialTotalUseCount: 0
+  fallbackSpell: {fileID: 0}

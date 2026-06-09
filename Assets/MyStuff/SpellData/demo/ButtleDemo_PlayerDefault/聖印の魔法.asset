@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a43496e0798e440ae825e657144c72, type: 3}
+  m_Name: "\u8056\u5370\u306E\u9B54\u6CD5"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnBasedBattle.SpellData
+  spellId: SEIIN
+  displayName: "\u8056\u5370\u306E\u9B54\u6CD5"
+  description: "MP cost 50\n\u81EA\u8EAB\u306EHP\u3092\u5927\u304D\u304F\u56DE\u5FA9\u3059\u308B"
+  iconSprite: {fileID: -523983158464167994, guid: 79a581198e0e25040b1b5f4842a85ace, type: 3}
+  impactEffectPrefab: {fileID: 1998810636812119479, guid: 2b5f1b609031c2045b4750fe89eeded7, type: 3}
+  attackEffectSe: {fileID: 8300000, guid: 9acbd5791152b664b9d52196d934361c, type: 3}
+  element: 0
+  category: 1
+  targetType: 0
+  mpCost: 50
+  attackCoefficient: 0
+  defenseCoefficient: 0
+  hitCount: 1
+  flatHealAmount: 900
+  stackPerHit: 1
+  useCurrentHpAsAttackSource: 0
+  missingHpAttackCoefficientBonusAtZeroHp: 0
+  allowCritical: 1
+  defensePenetration: 0
+  orderAffinity: 0
+  firstOrderAttackCoefficientBonus: 0
+  secondOrderAttackCoefficientBonus: 0
+  thirdOrderAttackCoefficientBonus: 0
+  nextSpellAttackCoefficientBonus: 0
+  selfAttackStatDelta: 0
+  selfDefenseStatDelta: 0
+  targetAttackStatDelta: 0
+  targetDefenseStatDelta: 0
+  statModifierDurationTurns: 0
+  selfAttackCoefficientDelta: 0
+  selfDefenseCoefficientDelta: 0
+  targetAttackCoefficientDelta: 0
+  targetDefenseCoefficientDelta: 0
+  coefficientModifierDurationTurns: 0
+  levelAttackCoefficientPerLevel: 0.05
+  maxLevel: 6
+  levelGrowthEntries: []
+  useCountAttackCoefficientBonusPerUse: 0
+  capUseCountAttackCoefficientBonus: 0
+  maxUseCountAttackCoefficientBonus: 0
+  permanentSelfAttackDeltaOnUse: 0
+  permanentSelfDefenseDeltaOnUse: 0
+  permanentSelfMaxHpDeltaOnUse: 0
+  permanentSelfMaxMpDeltaOnUse: 0
+  restoreGainedMaxHpOnUse: 1
+  restoreGainedMaxMpOnUse: 1

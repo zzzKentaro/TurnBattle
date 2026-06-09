@@ -1,12 +1,13 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TurnBasedBattle
 {
     /// <summary>
-    /// バトルの進行状況やターン管理、魔法アクションのキュー管理を行うゲームのメインシステム。
+    /// バトルの進行状況やターン管琁E��E��法アクションのキュー管琁E��行うゲームのメインシスチE��、E
     /// </summary>
     public class BattleManager : MonoBehaviour
     {
@@ -17,8 +18,10 @@ namespace TurnBasedBattle
         [SerializeField] private BattleTuning tuning;
         [SerializeField] private DamageSequencePlayer damageSequencePlayer;
         [SerializeField] private ProjectionShifter projectionShifter;
+        [SerializeField] private SpellEffectCatalog spellEffectCatalog;
 
         [Header("Player initial memory")]
+        [SerializeField] private bool startBattleOnStart = true;
         [SerializeField] private List<SpellData> playerStartingSpells = new List<SpellData>();
 
         [Header("Timing")]
@@ -31,16 +34,38 @@ namespace TurnBasedBattle
         [SerializeField] private AudioClip memorySuccessSe;
         [SerializeField, Min(0f)] private float uiSeVolume = 1f;
 
+        [Header("BGM")]
+        [SerializeField] private AudioSource bgmAudioSource;
+        [SerializeField, Min(0f)] private float bgmVolume = 1f;
+        [SerializeField] private bool stopBgmWhenWaveHasNoClip;
+
         private readonly SpellAction[] playerQueuedActions = new SpellAction[3];
         private readonly List<SpellData> memoryCandidates = new List<SpellData>();
         private readonly SpellData[] lastEnemyUsedSpells = new SpellData[3];
 
         private bool isBusy;
         private int turnNumber = 1;
+        private BattleUnit defaultEnemyUnit;
+        private BattleUnit spawnedWaveEnemyUnit;
         private SpellData pendingEnemySpellCopy;
         private int pendingEnemySpellCopySourceSlot = -1;
+        private bool skipDefaultStartingSpellsOnce;
+        private bool battleResultNotified;
+        private readonly List<SpellData> pendingWavePlayerSpells = new List<SpellData>();
+        private readonly List<SpellData> pendingInitialEnemyLastUsedSpells = new List<SpellData>();
+        private readonly List<StageRuleBase> activeStageRules = new List<StageRuleBase>();
+        private string pendingWaveStartLogMessage;
+        private BattleStageData currentStageData;
+        private BattleWaveData currentWaveData;
+        private int currentWaveIndex = -1;
 
         public BattleFlowState State { get; private set; } = BattleFlowState.Idle;
+        public int CurrentTurnNumber => turnNumber;
+        public BattleStageData CurrentStageData => currentStageData;
+        public BattleWaveData CurrentWaveData => currentWaveData;
+        public int CurrentWaveIndex => currentWaveIndex;
+        public BattleUnit CurrentPlayerUnit => playerUnit;
+        public BattleUnit CurrentEnemyUnit => enemyUnit;
         public IReadOnlyList<SpellData> MemoryCandidates => memoryCandidates;
         public bool HasPendingEnemySpellCopy => pendingEnemySpellCopy != null;
         public SpellData PendingEnemySpellCopySpellData => pendingEnemySpellCopy;
@@ -53,18 +78,29 @@ namespace TurnBasedBattle
         public event Action OnPlayerQueuedActionsChanged;
         public event Action OnPlayerMemoryChanged;
         public event Action OnEnemyLastUsedSpellsChanged;
+        public event Action<BattleUnit> OnEnemyUnitChanged;
         public event Action OnPendingEnemySpellCopyChanged;
+        public event Action OnBattleWon;
+        public event Action OnBattleLost;
+
+        private void Awake()
+        {
+            defaultEnemyUnit = enemyUnit;
+        }
 
         private void Start()
         {
-            StartBattle();
+            if (startBattleOnStart)
+            {
+                StartBattle();
+            }
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetMouseButtonDown(1))
             {
-                HandleEscapeKey();
+                HandleRightClickCancel();
             }
         }
 
@@ -72,12 +108,14 @@ namespace TurnBasedBattle
         {
             if (playerUnit == null || enemyUnit == null || enemyAI == null || tuning == null)
             {
-                Debug.LogError("BattleManager: 参照が不足しています。");
+                Debug.LogError("BattleManager: required references are missing.");
                 return;
             }
 
             turnNumber = 1;
             isBusy = false;
+            battleResultNotified = false;
+            NotifyEnemyUnitChanged();
             memoryCandidates.Clear();
             ClearAllPlayerQueuedActions(false);
             ClearLastEnemyUsedSpells(false);
@@ -85,14 +123,23 @@ namespace TurnBasedBattle
 
             playerUnit.InitializeForBattle();
             enemyUnit.InitializeForBattle();
+            enemyAI.ResetBattleState();
 
-            if (playerUnit.MemoryBook.RememberedSpells.Count == 0)
+            if (!skipDefaultStartingSpellsOnce && playerUnit.MemoryBook.RememberedSpells.Count == 0)
             {
                 for (int i = 0; i < playerStartingSpells.Count; i++)
                 {
                     playerUnit.MemoryBook.LearnSpell(playerStartingSpells[i], false);
                 }
             }
+
+            if (pendingWavePlayerSpells.Count > 0)
+            {
+                playerUnit.LearnSpells(pendingWavePlayerSpells, false);
+                pendingWavePlayerSpells.Clear();
+            }
+
+            ApplyInitialEnemyLastUsedSpells();
 
             if (projectionShifter != null)
             {
@@ -104,8 +151,203 @@ namespace TurnBasedBattle
             NotifyEnemyLastUsedSpellsChanged();
             NotifyPendingEnemySpellCopyChanged();
 
-            Log("バトル開始。");
+            Log("Battle log.");
+            if (!string.IsNullOrWhiteSpace(pendingWaveStartLogMessage))
+            {
+                Log("Battle log.");
+                pendingWaveStartLogMessage = null;
+            }
+
+            skipDefaultStartingSpellsOnce = false;
             BeginPlayerTurn();
+        }
+
+        public void StartWaveBattle(BattleWaveData waveData)
+        {
+            StartWaveBattle(waveData, currentStageData, currentWaveIndex);
+        }
+
+        public void StartWaveBattle(BattleWaveData waveData, BattleStageData stageData, int waveIndex)
+        {
+            if (waveData == null)
+            {
+                Debug.LogWarning("BattleManager warning.", this);
+                return;
+            }
+
+            currentStageData = stageData;
+            currentWaveData = waveData;
+            currentWaveIndex = waveIndex;
+
+            PlayWaveBgm(waveData);
+
+            enemyUnit = ResolveEnemyUnitForWave(waveData);
+            if (projectionShifter != null && enemyUnit != null)
+            {
+                projectionShifter.SetEnemyObject(enemyUnit.gameObject);
+            }
+
+            NotifyEnemyUnitChanged();
+
+            List<SpellData> enemySpellsForWave = new List<SpellData>();
+            AddNonNullUnique(enemySpellsForWave, waveData.EnemySpells);
+            AddEnemyProfileSpells(enemySpellsForWave, waveData.EnemyAIProfile);
+
+            if (enemyUnit != null)
+            {
+                enemyUnit.SetEnemySpellsForWave(enemySpellsForWave, true);
+            }
+
+            if (enemyAI != null)
+            {
+                enemyAI.SetProfile(waveData.EnemyAIProfile);
+            }
+
+            pendingWavePlayerSpells.Clear();
+            AddNonNull(pendingWavePlayerSpells, waveData.PlayerSpellsToAddOnStart);
+
+            pendingInitialEnemyLastUsedSpells.Clear();
+            AddNonNull(pendingInitialEnemyLastUsedSpells, waveData.InitialEnemyLastUsedSpells);
+            pendingWaveStartLogMessage = !string.IsNullOrWhiteSpace(waveData.WaveStartLogMessage)
+                ? waveData.WaveStartLogMessage
+                : waveData.WaveDisplayName;
+
+            skipDefaultStartingSpellsOnce = true;
+            StartBattle();
+        }
+
+        private BattleUnit ResolveEnemyUnitForWave(BattleWaveData waveData)
+        {
+            BattleUnit overrideUnit = waveData != null ? waveData.EnemyUnitOverride : null;
+            if (overrideUnit == null)
+            {
+                return UseDefaultEnemyUnit();
+            }
+
+            if (overrideUnit == defaultEnemyUnit || IsSceneObject(overrideUnit))
+            {
+                ClearSpawnedWaveEnemy();
+                if (defaultEnemyUnit != null && overrideUnit != defaultEnemyUnit)
+                {
+                    defaultEnemyUnit.gameObject.SetActive(false);
+                }
+
+                overrideUnit.gameObject.SetActive(true);
+                return overrideUnit;
+            }
+
+            return SpawnWaveEnemy(overrideUnit);
+        }
+
+        private BattleUnit UseDefaultEnemyUnit()
+        {
+            ClearSpawnedWaveEnemy();
+            if (defaultEnemyUnit != null)
+            {
+                defaultEnemyUnit.gameObject.SetActive(true);
+            }
+
+            return defaultEnemyUnit;
+        }
+
+        private BattleUnit SpawnWaveEnemy(BattleUnit prefab)
+        {
+            ClearSpawnedWaveEnemy();
+            if (defaultEnemyUnit == null)
+            {
+                Debug.LogWarning("BattleManager: default enemyUnit is not assigned, so enemyUnitOverride prefab cannot be placed.", this);
+                return prefab;
+            }
+
+            Transform defaultTransform = defaultEnemyUnit.transform;
+            BattleUnit instance = Instantiate(prefab, defaultTransform.parent);
+            Transform instanceTransform = instance.transform;
+            instanceTransform.SetSiblingIndex(defaultTransform.GetSiblingIndex());
+            instanceTransform.localPosition = defaultTransform.localPosition;
+            instanceTransform.localRotation = defaultTransform.localRotation;
+            instanceTransform.localScale = defaultTransform.localScale;
+            instance.name = prefab.name;
+
+            defaultEnemyUnit.gameObject.SetActive(false);
+            spawnedWaveEnemyUnit = instance;
+            return instance;
+        }
+
+        private void ClearSpawnedWaveEnemy()
+        {
+            if (spawnedWaveEnemyUnit == null)
+            {
+                return;
+            }
+
+            Destroy(spawnedWaveEnemyUnit.gameObject);
+            spawnedWaveEnemyUnit = null;
+        }
+
+        private static bool IsSceneObject(BattleUnit unit)
+        {
+            return unit != null && unit.gameObject.scene.IsValid();
+        }
+
+        public void ConfigureStageRules(BattleStageData stageData)
+        {
+            currentStageData = stageData;
+            activeStageRules.Clear();
+
+            if (stageData != null && stageData.StageRules != null)
+            {
+                for (int i = 0; i < stageData.StageRules.Count; i++)
+                {
+                    if (stageData.StageRules[i] != null)
+                    {
+                        activeStageRules.Add(stageData.StageRules[i]);
+                    }
+                }
+            }
+
+            StageRuleContext context = CreateStageRuleContext(null, null);
+            for (int i = 0; i < activeStageRules.Count; i++)
+            {
+                activeStageRules[i].OnStageStarted(context);
+            }
+        }
+
+        public void NotifyWaveRulesStarted(BattleWaveData waveData, int waveIndex)
+        {
+            currentWaveData = waveData;
+            currentWaveIndex = waveIndex;
+
+            StageRuleContext context = CreateStageRuleContext(null, null);
+            for (int i = 0; i < activeStageRules.Count; i++)
+            {
+                activeStageRules[i].OnWaveStarted(context);
+            }
+        }
+
+        public void PreparePlayerMemoryForStage(IReadOnlyList<SpellData> spells, bool clearMemory)
+        {
+            if (playerUnit == null)
+            {
+                Debug.LogWarning("BattleManager warning.", this);
+                return;
+            }
+
+            if (clearMemory)
+            {
+                playerUnit.ClearMemory();
+            }
+
+            playerUnit.LearnSpells(spells, false);
+            skipDefaultStartingSpellsOnce = true;
+            NotifyPlayerMemoryChanged();
+        }
+
+        public void WriteBattleLog(string message)
+        {
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                Log("Battle log.");
+            }
         }
 
         public IReadOnlyList<RememberedSpell> GetPlayerRememberedSpells()
@@ -160,6 +402,78 @@ namespace TurnBasedBattle
             return lastEnemyUsedSpells[slotIndex];
         }
 
+        public bool HasPlayerRememberedSpell(SpellData spellData)
+        {
+            return playerUnit != null && playerUnit.MemoryBook.IndexOf(spellData) >= 0;
+        }
+
+        public bool CanCopyLastEnemyUsedSpell(int enemySlotIndex, out string reason)
+        {
+            reason = "Action is not available.";
+
+            if (State != BattleFlowState.PlayerSelection || isBusy)
+            {
+                reason = "Action is not available.";
+                return false;
+            }
+
+            if (playerUnit == null)
+            {
+                reason = "Action is not available.";
+                return false;
+            }
+
+            SpellData sourceSpell = GetLastEnemyUsedSpellData(enemySlotIndex);
+            if (sourceSpell == null)
+            {
+                reason = "Action is not available.";
+                return false;
+            }
+
+            if (HasPlayerRememberedSpell(sourceSpell))
+            {
+                reason = "Action is not available.";
+                return false;
+            }
+
+            if (playerUnit.MemoryBook.IsFull)
+            {
+                reason = "Action is not available.";
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool TryCopyLastEnemyUsedSpellToMemory(int enemySlotIndex)
+        {
+            if (!CanCopyLastEnemyUsedSpell(enemySlotIndex, out string reason))
+            {
+                Log("Battle log.");
+                return false;
+            }
+
+            SpellData sourceSpell = GetLastEnemyUsedSpellData(enemySlotIndex);
+            bool success = playerUnit.MemoryBook.TryLearnSpellInFirstEmptySlot(
+                sourceSpell,
+                out _,
+                out int targetIndex,
+                out bool alreadyKnown,
+                false);
+
+            if (!success || alreadyKnown)
+            {
+                Log("Battle log.");
+                return false;
+            }
+
+            PlayUiSe(memorySuccessSe);
+            ClearPendingEnemySpellCopy(true);
+            NotifyPlayerMemoryChanged();
+            Log("Battle log.");
+            return true;
+        }
+
         public int GetNextEmptyPlayerActionSlot()
         {
             for (int i = 0; i < playerQueuedActions.Length; i++)
@@ -185,26 +499,26 @@ namespace TurnBasedBattle
         {
             if (State != BattleFlowState.PlayerSelection || isBusy)
             {
-                Debug.Log("TryQueuePlayerSpell: 今はプレイヤー選択中ではないか、処理中です。");
+                Debug.Log("BattleManager debug.");
                 return false;
             }
 
             if (slotIndex < 0 || slotIndex >= playerQueuedActions.Length)
             {
-                Debug.LogWarning($"TryQueuePlayerSpell: slotIndex が範囲外です。 slotIndex={slotIndex}, length={playerQueuedActions.Length}");
+                Debug.LogWarning("BattleManager warning.");
                 return false;
             }
 
             if (rememberedSpell == null || rememberedSpell.SpellData == null)
             {
-                Debug.LogWarning("TryQueuePlayerSpell: rememberedSpell か SpellData が null です。");
+                Debug.LogWarning("BattleManager warning.");
                 return false;
             }
 
             SpellData spell = rememberedSpell.SpellData;
             if (!CanQueuePlayerSpell(slotIndex, rememberedSpell, out string reason))
             {
-                Log(reason);
+                Log("Battle log.");
                 return false;
             }
 
@@ -219,9 +533,9 @@ namespace TurnBasedBattle
             }
 
             playerQueuedActions[slotIndex] = new SpellAction(playerUnit, target, rememberedSpell, slotIndex);
-            Log($"プレイヤー行動{slotIndex + 1}に {spell.DisplayName} をセット。");
+            Log("Battle log.");
             NotifyPlayerQueuedActionsChanged();
-            Debug.Log($"現在の選択魔法: {GetQueuedActionSummary()}");
+            Debug.Log("BattleManager debug.");
 
             if (AreAllPlayerActionsReady())
             {
@@ -234,30 +548,30 @@ namespace TurnBasedBattle
 
         public bool CanQueuePlayerSpell(int slotIndex, RememberedSpell rememberedSpell, out string reason)
         {
-            reason = string.Empty;
+            reason = "Action is not available.";
 
             if (playerUnit == null)
             {
-                reason = "プレイヤーユニットが未設定です。";
+                reason = "Action is not available.";
                 return false;
             }
 
             if (slotIndex < 0 || slotIndex >= playerQueuedActions.Length)
             {
-                reason = $"行動スロット {slotIndex + 1} は存在しません。";
+                reason = "Action is not available.";
                 return false;
             }
 
             if (rememberedSpell == null || rememberedSpell.SpellData == null)
             {
-                reason = "魔法データが不正です。";
+                reason = "Action is not available.";
                 return false;
             }
 
             SpellData spell = rememberedSpell.SpellData;
             if (!spell.IsValidForOrder(slotIndex))
             {
-                reason = $"{spell.DisplayName} は {slotIndex + 1}番目には使えません。";
+                reason = "Action is not available.";
                 return false;
             }
 
@@ -265,7 +579,7 @@ namespace TurnBasedBattle
             int requiredMp = reservedMp + Mathf.Max(0, spell.MpCost);
             if (playerUnit.CurrentMP < requiredMp)
             {
-                reason = $"MPが足りません。必要MP: {requiredMp} / 現在MP: {playerUnit.CurrentMP}";
+                reason = "Action is not available.";
                 return false;
             }
 
@@ -306,7 +620,7 @@ namespace TurnBasedBattle
 
             playerQueuedActions[slotIndex] = null;
             NotifyPlayerQueuedActionsChanged();
-            Debug.Log($"現在の選択魔法: {GetQueuedActionSummary()}");
+            Debug.Log("BattleManager debug.");
         }
 
         public bool CancelLastPlayerQueuedSpell()
@@ -326,14 +640,14 @@ namespace TurnBasedBattle
 
                 string spellName = action.SpellData != null ? action.SpellData.DisplayName : "(null)";
                 ClearPlayerSpell(i);
-                Log($"プレイヤー行動{i + 1}の {spellName} をキャンセル。");
+                Log("Battle log.");
                 return true;
             }
 
             return false;
         }
 
-        private void HandleEscapeKey()
+        private void HandleRightClickCancel()
         {
             if (State != BattleFlowState.PlayerSelection || isBusy)
             {
@@ -344,7 +658,7 @@ namespace TurnBasedBattle
             {
                 string spellName = pendingEnemySpellCopy != null ? pendingEnemySpellCopy.DisplayName : "(null)";
                 CancelPendingEnemySpellCopy();
-                Log($"敵魔法コピー待ちをキャンセル。 対象: {spellName}");
+                Log("Battle log.");
                 return;
             }
 
@@ -361,22 +675,22 @@ namespace TurnBasedBattle
         }
 
         /// <summary>
-        /// プレイヤーターン中、敵が前ターンに使った魔法を自分の記憶枠へコピーする。
-        /// 空きがあれば一番若い空き番号へ自動で入れる。
-        /// 満杯なら置き換え待ち状態に入る。
+        /// プレイヤーターン中、敵が前ターンに使った魔法を自刁E�E記�E枠へコピ�Eする、E
+        /// 空きがあれば一番若ぁE��き番号へ自動で入れる、E
+        /// 満杯なら置き換え征E��状態に入る、E
         /// </summary>
         public bool TryBeginEnemySpellCopy(int enemySlotIndex)
         {
             if (isBusy || State != BattleFlowState.PlayerSelection)
             {
-                Debug.Log("TryBeginEnemySpellCopy: 今は敵魔法コピーを行えるタイミングではありません。");
+                Debug.Log("BattleManager debug.");
                 return false;
             }
 
             SpellData sourceSpell = GetLastEnemyUsedSpellData(enemySlotIndex);
             if (sourceSpell == null)
             {
-                Debug.LogWarning($"TryBeginEnemySpellCopy: 敵スロット {enemySlotIndex + 1} に魔法がありません。");
+                Debug.LogWarning("BattleManager warning.");
                 return false;
             }
 
@@ -385,7 +699,7 @@ namespace TurnBasedBattle
             {
                 ClearPendingEnemySpellCopy(true);
                 NotifyPlayerMemoryChanged();
-                Log($"{sourceSpell.DisplayName} は既に記憶スロット {existingIndex + 1} にあります。新しくは追加されません。");
+                Log("Battle log.");
                 return true;
             }
 
@@ -401,7 +715,7 @@ namespace TurnBasedBattle
 
                 if (!success)
                 {
-                    Debug.LogWarning($"TryBeginEnemySpellCopy: {sourceSpell.DisplayName} の記憶に失敗しました。");
+                    Debug.LogWarning("BattleManager warning.");
                     return false;
                 }
 
@@ -411,12 +725,12 @@ namespace TurnBasedBattle
 
                 if (alreadyKnown)
                 {
-                    Log($"{sourceSpell.DisplayName} は既に記憶済みです。新しくは追加されません。 (Count {beforeCount} -> {afterCount})");
+                    Log("Battle log.");
                 }
                 else
                 {
                     PlayUiSe(memorySuccessSe);
-                    Log($"{sourceSpell.DisplayName} を記憶スロット {targetIndex + 1} にコピーした");
+                    Log("Battle log.");
                 }
 
                 return true;
@@ -425,12 +739,12 @@ namespace TurnBasedBattle
             pendingEnemySpellCopy = sourceSpell;
             pendingEnemySpellCopySourceSlot = enemySlotIndex;
             NotifyPendingEnemySpellCopyChanged();
-            Log($"記憶スロットが満杯です。{sourceSpell.DisplayName} を入れ替えたい自分のスロットをクリックしてください。");
+            Log("Battle log.");
             return true;
         }
 
         /// <summary>
-        /// 満杯時に選ばれた敵魔法を、指定した自分の記憶スロットへ上書きする。
+        /// 満杯時に選ばれた敵魔法を、指定した�E刁E�E記�EスロチE��へ上書きする、E
         /// </summary>
         public bool TryResolvePendingEnemySpellCopyToMemorySlot(int memoryIndex)
         {
@@ -457,7 +771,7 @@ namespace TurnBasedBattle
 
             if (!success)
             {
-                Debug.LogWarning($"TryResolvePendingEnemySpellCopyToMemorySlot: memoryIndex が不正です。 memoryIndex={memoryIndex}");
+                Debug.LogWarning("BattleManager warning.");
                 return false;
             }
 
@@ -467,12 +781,12 @@ namespace TurnBasedBattle
             if (alreadyKnown)
             {
                 int existingIndex = result != null ? playerUnit.MemoryBook.IndexOf(result.SpellData) : -1;
-                Log($"{newName} は既に記憶スロット {existingIndex + 1} にあります。入れ替えは行いません。");
+                Log("Battle log.");
                 return true;
             }
 
             PlayUiSe(memorySuccessSe);
-            Log($"記憶スロット {memoryIndex + 1} を {oldName} から {newName} に入れ替えた。");
+            Log("Battle log.");
             return true;
         }
 
@@ -482,11 +796,11 @@ namespace TurnBasedBattle
         }
 
         /// <summary>
-        /// 旧・記憶フェーズ用。現在は使用しない。
+        /// 旧・記�Eフェーズ用。現在は使用しなぁE��E
         /// </summary>
         public void ConfirmMemoryChoices(List<SpellData> selectedSpells)
         {
-            Debug.LogWarning("ConfirmMemoryChoices: 現在の仕様では記憶フェーズは使っていません。敵魔法スロットをプレイヤーターン中にクリックしてください。");
+            Debug.LogWarning("BattleManager warning.");
         }
 
         private void BeginPlayerTurn()
@@ -500,14 +814,13 @@ namespace TurnBasedBattle
                 if (playerUnit.IsDead)
                 {
                     SetState(BattleFlowState.Defeat);
-                    Log("プレイヤーは倒れた。");
+                    Log("Battle log.");
                     return;
                 }
             }
 
             SetState(BattleFlowState.PlayerSelection);
-            Log($"--- ターン {turnNumber} / プレイヤーターン ---");
-            Debug.Log($"現在の選択魔法: {GetQueuedActionSummary()}");
+            Log("Battle log.");
             OnPlayerSelectionStarted?.Invoke();
         }
 
@@ -519,12 +832,12 @@ namespace TurnBasedBattle
             playerUnit.AdvanceOwnTurnEnd();
 
             ClearAllPlayerQueuedActions(true);
-            Debug.Log($"現在の選択魔法: {GetQueuedActionSummary()}");
+            Debug.Log("BattleManager debug.");
 
             if (enemyUnit.IsDead)
             {
                 SetState(BattleFlowState.Victory);
-                Log("勝利！");
+                Log("Battle log.");
                 isBusy = false;
                 yield break;
             }
@@ -540,16 +853,16 @@ namespace TurnBasedBattle
                 if (enemyUnit.IsDead)
                 {
                     SetState(BattleFlowState.Victory);
-                    Log("勝利！");
+                    Log("Battle log.");
                     isBusy = false;
                     yield break;
                 }
             }
 
             SetState(BattleFlowState.EnemyExecution);
-            Log("--- 敵ターン ---");
+            Log("Battle log.");
 
-            List<SpellAction> enemyActions = enemyAI.BuildTurnActions(enemyUnit, playerUnit);
+            List<SpellAction> enemyActions = enemyAI.BuildTurnActions(enemyUnit, playerUnit, turnNumber);
             CacheEnemyLastUsedSpells(enemyActions);
 
             memoryCandidates.Clear();
@@ -563,8 +876,8 @@ namespace TurnBasedBattle
 
             if (enemyActions.Count == 0)
             {
-                Log("敵は行動できなかった。");
-                Debug.LogWarning("BattleManager: enemyActions が 0 件です。Enemy Spell Pool や順番制約を確認してください。");
+                Log("Battle log.");
+                Debug.LogWarning("BattleManager warning.");
             }
 
             yield return ExecuteSequence(enemyActions);
@@ -573,7 +886,7 @@ namespace TurnBasedBattle
             if (playerUnit.IsDead)
             {
                 SetState(BattleFlowState.Defeat);
-                Log("敗北……");
+                Log("Battle log.");
                 isBusy = false;
                 yield break;
             }
@@ -606,7 +919,10 @@ namespace TurnBasedBattle
                     action,
                     tuning,
                     carryToNextSpellAttackBonus,
-                    Log);
+                    Log,
+                    this,
+                    spellEffectCatalog,
+                    activeStageRules);
 
                 if (action.Caster == playerUnit && action.RememberedSpell != null)
                 {
@@ -645,6 +961,8 @@ namespace TurnBasedBattle
                         GetShakeTargetTypeForHit(hit),
                         hit.effectPrefab,
                         hit.effectSe,
+                        hit.isHealing,
+                        hit.suppressPopup,
                         hit.isHealing);
                 }
 
@@ -664,7 +982,9 @@ namespace TurnBasedBattle
                         effectPrefab = hit.effectPrefab,
                         effectSe = hit.effectSe,
                         shakeTargetType = GetShakeTargetTypeForHit(hit),
-                        suppressHitSound = hit.isHealing,
+                        suppressHitSound = hit.isHealing || hit.suppressPopup,
+                        suppressPopup = hit.suppressPopup,
+                        isHealing = hit.isHealing,
                     });
                 }
             }
@@ -719,6 +1039,81 @@ namespace TurnBasedBattle
             NotifyEnemyLastUsedSpellsChanged();
         }
 
+        private void ApplyInitialEnemyLastUsedSpells()
+        {
+            if (pendingInitialEnemyLastUsedSpells.Count == 0)
+            {
+                return;
+            }
+
+            ClearLastEnemyUsedSpells(false);
+            for (int i = 0; i < lastEnemyUsedSpells.Length && i < pendingInitialEnemyLastUsedSpells.Count; i++)
+            {
+                lastEnemyUsedSpells[i] = pendingInitialEnemyLastUsedSpells[i];
+            }
+
+            pendingInitialEnemyLastUsedSpells.Clear();
+        }
+
+        private static void AddNonNull(List<SpellData> destination, IReadOnlyList<SpellData> source)
+        {
+            if (destination == null || source == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < source.Count; i++)
+            {
+                if (source[i] != null)
+                {
+                    destination.Add(source[i]);
+                }
+            }
+        }
+
+        private static void AddNonNullUnique(List<SpellData> destination, IReadOnlyList<SpellData> source)
+        {
+            if (destination == null || source == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < source.Count; i++)
+            {
+                SpellData spell = source[i];
+                if (spell != null && !destination.Contains(spell))
+                {
+                    destination.Add(spell);
+                }
+            }
+        }
+
+        private static void AddEnemyProfileSpells(List<SpellData> destination, EnemyAIProfile profile)
+        {
+            if (destination == null || profile == null)
+            {
+                return;
+            }
+
+            IReadOnlyList<EnemySpellEntry> entries = profile.Spells;
+            if (entries != null)
+            {
+                for (int i = 0; i < entries.Count; i++)
+                {
+                    SpellData spell = entries[i] != null ? entries[i].spell : null;
+                    if (spell != null && !destination.Contains(spell))
+                    {
+                        destination.Add(spell);
+                    }
+                }
+            }
+
+            if (profile.FallbackSpell != null && !destination.Contains(profile.FallbackSpell))
+            {
+                destination.Add(profile.FallbackSpell);
+            }
+        }
+
         private void ClearLastEnemyUsedSpells(bool notify)
         {
             Array.Clear(lastEnemyUsedSpells, 0, lastEnemyUsedSpells.Length);
@@ -748,7 +1143,7 @@ namespace TurnBasedBattle
             }
 
             unit.TakeDamage(dotDamage);
-            Log($"{unit.UnitName} は火傷で {dotDamage} ダメージを受けた。");
+            Log("Battle log.");
             return true;
         }
 
@@ -780,6 +1175,11 @@ namespace TurnBasedBattle
             OnEnemyLastUsedSpellsChanged?.Invoke();
         }
 
+        private void NotifyEnemyUnitChanged()
+        {
+            OnEnemyUnitChanged?.Invoke(enemyUnit);
+        }
+
         private void NotifyPendingEnemySpellCopyChanged()
         {
             OnPendingEnemySpellCopyChanged?.Invoke();
@@ -802,16 +1202,74 @@ namespace TurnBasedBattle
             AudioSource.PlayClipAtPoint(clip, playPosition, uiSeVolume);
         }
 
+        private void PlayWaveBgm(BattleWaveData waveData)
+        {
+            AudioClip clip = waveData != null ? waveData.WaveBgmClip : null;
+            if (clip == null)
+            {
+                if (stopBgmWhenWaveHasNoClip && bgmAudioSource != null)
+                {
+                    bgmAudioSource.Stop();
+                    bgmAudioSource.clip = null;
+                }
+
+                return;
+            }
+
+            if (bgmAudioSource == null)
+            {
+                bgmAudioSource = gameObject.AddComponent<AudioSource>();
+            }
+
+            if (bgmAudioSource.clip == clip && bgmAudioSource.isPlaying)
+            {
+                bgmAudioSource.volume = bgmVolume;
+                return;
+            }
+
+            bgmAudioSource.clip = clip;
+            bgmAudioSource.loop = true;
+            bgmAudioSource.volume = bgmVolume;
+            bgmAudioSource.Play();
+        }
+
         private void SetState(BattleFlowState state)
         {
             State = state;
             OnStateChanged?.Invoke(state);
+
+            if (battleResultNotified)
+            {
+                return;
+            }
+
+            if (state == BattleFlowState.Victory)
+            {
+                battleResultNotified = true;
+                OnBattleWon?.Invoke();
+            }
+            else if (state == BattleFlowState.Defeat)
+            {
+                battleResultNotified = true;
+                OnBattleLost?.Invoke();
+            }
         }
 
         private void Log(string message)
         {
-            Debug.Log(message);
             OnBattleLog?.Invoke(message);
+        }
+
+        private StageRuleContext CreateStageRuleContext(SpellAction action, SpellExecutionReport report)
+        {
+            return new StageRuleContext(
+                this,
+                currentStageData,
+                currentWaveData,
+                currentWaveIndex,
+                action,
+                report,
+                Log);
         }
     }
 }

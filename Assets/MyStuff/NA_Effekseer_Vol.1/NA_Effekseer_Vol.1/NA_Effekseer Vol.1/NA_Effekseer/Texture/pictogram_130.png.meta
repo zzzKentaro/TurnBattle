@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 79ab12b89d80dec4c8007383a666ca83
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6075478114011333986
+    second: pictogram_130_0
+  - first:
+      213: -4553500314370687217
+    second: pictogram_130_1
+  - first:
+      213: -4271856457330850154
+    second: pictogram_130_2
+  - first:
+      213: -1338150364380022719
+    second: pictogram_130_3
+  - first:
+      213: -4073159723803796070
+    second: pictogram_130_4
+  - first:
+      213: 2508430585523445922
+    second: pictogram_130_5
+  - first:
+      213: 1036285579341441106
+    second: pictogram_130_6
+  - first:
+      213: 218548698240564775
+    second: pictogram_130_7
+  - first:
+      213: -3353090602510330212
+    second: pictogram_130_8
+  - first:
+      213: 4060708582537420821
+    second: pictogram_130_9
+  - first:
+      213: 1119473434759883298
+    second: pictogram_130_10
+  - first:
+      213: 7570074895021066219
+    second: pictogram_130_11
+  - first:
+      213: 7436551852814877483
+    second: pictogram_130_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pictogram_130_0
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 665
+        width: 321
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9ab1b538d09faba0800000000000000
+      internalID: -6075478114011333986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_1
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 438
+        width: 456
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0f3e4de697bec0c0800000000000000
+      internalID: -4553500314370687217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_2
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 665
+        width: 321
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69606517f2157b4c0800000000000000
+      internalID: -4271856457330850154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_3
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 442
+        width: 86
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 148b11b555fed6de0800000000000000
+      internalID: -1338150364380022719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_4
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 442
+        width: 218
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9d1f3dcfca3977c0800000000000000
+      internalID: -4073159723803796070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_5
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 442
+        width: 218
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a0a9d9c35cbfc220800000000000000
+      internalID: 2508430585523445922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_6
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 442
+        width: 86
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 258a1827e30a16e00800000000000000
+      internalID: 1036285579341441106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_7
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 130
+        width: 190
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72eb0c412e0780300800000000000000
+      internalID: 218548698240564775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_8
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 130
+        width: 56
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c96dba9ccdd6771d0800000000000000
+      internalID: -3353090602510330212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 130
+        width: 184
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 510e586f0f88a5830800000000000000
+      internalID: 4060708582537420821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_10
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 130
+        width: 184
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22a695e582b298f00800000000000000
+      internalID: 1119473434759883298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_11
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 130
+        width: 56
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be745d0520f4e0960800000000000000
+      internalID: 7570074895021066219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictogram_130_12
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 130
+        width: 190
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b23cdc47280f33760800000000000000
+      internalID: 7436551852814877483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      pictogram_130_0: -6075478114011333986
+      pictogram_130_1: -4553500314370687217
+      pictogram_130_10: 1119473434759883298
+      pictogram_130_11: 7570074895021066219
+      pictogram_130_12: 7436551852814877483
+      pictogram_130_2: -4271856457330850154
+      pictogram_130_3: -1338150364380022719
+      pictogram_130_4: -4073159723803796070
+      pictogram_130_5: 2508430585523445922
+      pictogram_130_6: 1036285579341441106
+      pictogram_130_7: 218548698240564775
+      pictogram_130_8: -3353090602510330212
+      pictogram_130_9: 4060708582537420821
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

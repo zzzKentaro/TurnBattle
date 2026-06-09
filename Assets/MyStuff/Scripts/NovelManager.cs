@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class NovelManager : MonoBehaviour
 {
     [Header("再生するシナリオデータ")]
     [SerializeField] private NovelScenarioData scenarioData;
+    [SerializeField] private bool startScenarioOnStart = true;
 
     [Header("UI管理")]
     [SerializeField] private NovelUIManager uiManager;
@@ -53,6 +55,7 @@ public class NovelManager : MonoBehaviour
     private bool isScenarioFinished;
 
     private Coroutine typingCoroutine;
+    public event Action OnScenarioFinished;
 
     // タイプライター中に最終的に表示する全文。
     // 表示途中にボタンが押された場合、この文字列を一気に表示する。
@@ -66,7 +69,10 @@ public class NovelManager : MonoBehaviour
             inputHandler.OnBackToStartPressed += HandleBackToStartInput;
         }
 
-        StartScenario();
+        if (startScenarioOnStart)
+        {
+            StartScenario();
+        }
     }
 
     private void OnDestroy()
@@ -96,6 +102,12 @@ public class NovelManager : MonoBehaviour
         isScenarioFinished = false;
 
         StartCoroutine(LoadPage(currentPageIndex, useFade: false));
+    }
+
+    public void PlayScenario(NovelScenarioData nextScenarioData)
+    {
+        scenarioData = nextScenarioData;
+        StartScenario();
     }
 
     /// <summary>
@@ -380,6 +392,7 @@ public class NovelManager : MonoBehaviour
     private void FinishScenario()
     {
         isScenarioFinished = true;
+        OnScenarioFinished?.Invoke();
         Debug.Log("シナリオが最後まで終了しました。");
     }
 }
